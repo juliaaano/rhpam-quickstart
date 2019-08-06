@@ -9,7 +9,7 @@ Build and install rhdm-dependencies and rhdm-event-listener Maven artifacts foun
 
 ## Maven
 ```
-mvn package -s settings.xml
+mvn clean install
 ```
 
 ## Maven deploy

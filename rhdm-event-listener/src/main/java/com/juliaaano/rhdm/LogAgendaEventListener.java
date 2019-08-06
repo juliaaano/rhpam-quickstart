@@ -1,4 +1,4 @@
-package com.juliaaano;
+package com.juliaaano.rhdm;
 
 import org.kie.api.event.rule.DefaultAgendaEventListener;
 import org.kie.api.event.rule.AfterMatchFiredEvent;

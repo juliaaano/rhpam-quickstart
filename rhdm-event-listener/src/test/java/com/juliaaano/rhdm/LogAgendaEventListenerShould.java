@@ -1,4 +1,4 @@
-package com.juliaaano;
+package com.juliaaano.rhdm;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

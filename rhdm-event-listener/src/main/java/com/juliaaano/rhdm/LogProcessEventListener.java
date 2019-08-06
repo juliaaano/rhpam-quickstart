@@ -1,4 +1,4 @@
-package com.juliaaano;
+package com.juliaaano.rhdm;
 
 import org.kie.api.event.process.DefaultProcessEventListener;
 import org.kie.api.event.process.ProcessNodeTriggeredEvent;
