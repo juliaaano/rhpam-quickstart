@@ -1,0 +1,9 @@
+<kmodule xmlns="http://www.drools.org/xsd/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <kbase name="DefaultKB" default="true" eventProcessingMode="cloud" equalsBehavior="identity">
+    <ruleTemplate dtable="com/juliaaano/template/template-data.xls"
+                template="com/juliaaano/template/template.drt"
+                row="2" col="2"/>
+    <ksession name="StatefulKS" type="stateful" default="true" clockType="realtime"/>
+    <ksession name="StatelessKS" type="stateless" default="false" clockType="realtime"/>
+  </kbase>
+</kmodule>
