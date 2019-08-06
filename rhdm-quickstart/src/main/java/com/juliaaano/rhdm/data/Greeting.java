@@ -1,4 +1,4 @@
-package com.juliaaano.data;
+package com.juliaaano.rhdm.data;
 
 
 public class Greeting {

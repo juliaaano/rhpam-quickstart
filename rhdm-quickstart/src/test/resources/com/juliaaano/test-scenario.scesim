@@ -43,7 +43,7 @@
           </expressionIdentifier>
           <factIdentifier>
             <name>0|1</name>
-            <className>com.juliaaano.data.Person</className>
+            <className>com.juliaaano.rhdm.data.Person</className>
           </factIdentifier>
           <className>java.lang.String</className>
           <factAlias>Person</factAlias>
@@ -82,7 +82,7 @@
           </expressionIdentifier>
           <factIdentifier>
             <name>0|2</name>
-            <className>com.juliaaano.data.Greeting</className>
+            <className>com.juliaaano.rhdm.data.Greeting</className>
           </factIdentifier>
           <className>java.lang.String</className>
           <factAlias>Greeting</factAlias>
@@ -120,7 +120,7 @@
           <FactMappingValue>
             <factIdentifier>
               <name>0|1</name>
-              <className>com.juliaaano.data.Person</className>
+              <className>com.juliaaano.rhdm.data.Person</className>
             </factIdentifier>
             <expressionIdentifier>
               <name>0|1</name>
@@ -139,7 +139,7 @@
           <FactMappingValue>
             <factIdentifier>
               <name>0|2</name>
-              <className>com.juliaaano.data.Greeting</className>
+              <className>com.juliaaano.rhdm.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
               <name>0|2</name>
@@ -230,7 +230,7 @@
           <FactMappingValue>
             <factIdentifier>
               <name>0|1</name>
-              <className>com.juliaaano.data.Person</className>
+              <className>com.juliaaano.rhdm.data.Person</className>
             </factIdentifier>
             <expressionIdentifier>
               <name>0|1</name>
@@ -249,7 +249,7 @@
           <FactMappingValue>
             <factIdentifier>
               <name>0|2</name>
-              <className>com.juliaaano.data.Greeting</className>
+              <className>com.juliaaano.rhdm.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
               <name>0|2</name>

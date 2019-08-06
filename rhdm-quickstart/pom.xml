@@ -19,6 +19,7 @@
     <url>https://github.com/juliaaano/rhdm/rhdm-quickstart</url>
 
     <dependencies>
+        <!-- Local -->
         <dependency>
             <groupId>com.juliaaano</groupId>
             <artifactId>rhdm-event-listener</artifactId>

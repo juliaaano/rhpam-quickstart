@@ -3,10 +3,10 @@ name
 surname
 greeting
 
-package com.juliaaano.template;
+package com.juliaaano.rhdm.template;
 
-import com.juliaaano.data.Person;
-import com.juliaaano.data.Greeting;
+import com.juliaaano.rhdm.data.Person;
+import com.juliaaano.rhdm.data.Greeting;
 
 template "greetings"
 

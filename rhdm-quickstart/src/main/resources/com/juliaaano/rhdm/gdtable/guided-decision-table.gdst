@@ -102,14 +102,14 @@
   <imports>
     <imports>
       <org.kie.soup.project.datamodel.imports.Import>
-        <type>com.juliaaano.data.Person</type>
+        <type>com.juliaaano.rhdm.data.Person</type>
       </org.kie.soup.project.datamodel.imports.Import>
       <org.kie.soup.project.datamodel.imports.Import>
-        <type>com.juliaaano.data.Greeting</type>
+        <type>com.juliaaano.rhdm.data.Greeting</type>
       </org.kie.soup.project.datamodel.imports.Import>
     </imports>
   </imports>
-  <packageName>com.juliaaano.gdtable</packageName>
+  <packageName>com.juliaaano.rhdm.gdtable</packageName>
   <tableFormat>EXTENDED_ENTRY</tableFormat>
   <hitPolicy>NONE</hitPolicy>
   <data>
