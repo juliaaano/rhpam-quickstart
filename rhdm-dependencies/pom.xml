@@ -74,6 +74,11 @@
                 <version>${rhdm.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-workbench-models-guided-template</artifactId>
+                <version>${rhdm.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jbpm</groupId>
                 <artifactId>jbpm-bpmn2</artifactId>
                 <version>${rhdm.version}</version>

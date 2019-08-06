@@ -38,6 +38,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-workbench-models-guided-template</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-bpmn2</artifactId>
             <scope>test</scope>
