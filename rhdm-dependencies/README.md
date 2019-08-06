@@ -7,7 +7,7 @@ Red Had Decision Manager POM dependencies.
 <parent>
     <groupId>com.juliaaano</groupId>
     <artifactId>rhdm-dependencies</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <relativePath>../rhdm-dependencies</relativePath>
 </parent>
 ```
@@ -19,7 +19,7 @@ Red Had Decision Manager POM dependencies.
         <dependency>
             <groupId>com.juliaaano</groupId>
             <artifactId>rhdm-dependencies</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>

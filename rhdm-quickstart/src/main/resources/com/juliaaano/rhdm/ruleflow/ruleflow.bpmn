@@ -3,7 +3,7 @@
   <bpmn2:itemDefinition id="__1C803361-7EC2-4BF9-B76C-5B7030DF16EF_namespaceInputXItem" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="__1C803361-7EC2-4BF9-B76C-5B7030DF16EF_modelInputXItem" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="__1C803361-7EC2-4BF9-B76C-5B7030DF16EF_decisionInputXItem" structureRef="java.lang.String"/>
-  <bpmn2:process id="rhdm-quickstart.ruleflow" drools:packageName="com.juliaaano" drools:version="1.0" drools:adHoc="false" name="ruleflow" isExecutable="true">
+  <bpmn2:process id="rhdm-quickstart.ruleflow" drools:packageName="com.juliaaano.rhdm.ruleflow" drools:version="1.0" drools:adHoc="false" name="ruleflow" isExecutable="true">
     <bpmn2:sequenceFlow id="_52D0FCF6-A724-44C2-B505-F04AE9CA1DD7" sourceRef="_339F95B1-9510-4AF3-BE21-AE777FAF9BFB" targetRef="_1C803361-7EC2-4BF9-B76C-5B7030DF16EF">
       <bpmn2:extensionElements>
         <drools:metaData name="isAutoConnection.source">
