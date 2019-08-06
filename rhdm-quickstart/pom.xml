@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.juliaaano</groupId>
             <artifactId>rhdm-event-listener</artifactId>
-            <scope>provided</scope>
+            <scope>runtime</scope>
         </dependency>
         <!-- Test -->
         <dependency>
