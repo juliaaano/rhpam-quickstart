@@ -4,6 +4,11 @@
                 template="com/juliaaano/template/template.drt"
                 row="2" col="2"/>
     <ksession name="StatefulKS" type="stateful" default="true" clockType="realtime"/>
-    <ksession name="StatelessKS" type="stateless" default="false" clockType="realtime"/>
+    <ksession name="StatelessKS" type="stateless" default="false" clockType="realtime">
+      <listeners>
+        <agendaEventListener type="com.juliaaano.rhdm.LogAgendaEventListener"/>
+        <processEventListener type="com.juliaaano.rhdm.LogProcessEventListener"/>
+      </listeners>
+    </ksession>
   </kbase>
 </kmodule>

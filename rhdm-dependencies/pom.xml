@@ -51,6 +51,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Local -->
+            <dependency>
+                <groupId>com.juliaaano</groupId>
+                <artifactId>rhdm-event-listener</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
             <!-- RHDM -->
             <dependency>
                 <groupId>org.kie</groupId>

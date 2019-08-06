@@ -19,6 +19,11 @@
     <url>https://github.com/juliaaano/rhdm/rhdm-quickstart</url>
 
     <dependencies>
+        <dependency>
+            <groupId>com.juliaaano</groupId>
+            <artifactId>rhdm-event-listener</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- Test -->
         <dependency>
             <groupId>org.drools</groupId>
