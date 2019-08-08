@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+
+  rhdm:
+    image: juliaaano/rhdm-quickstart:local
+    environment:
+      KIE_ADMIN_USER: user
+      KIE_ADMIN_PWD: password
+    ports:
+      - target: 8080
+        published: 18080
+      # - target: 8443
+      #   published: 18443
+      # - target: 8778
+      #   published: 18778
+      # - target: 8888
+      #   published: 18888
+
+  postman:
+    image: postman/newman:4.5.3-alpine
+    command: run rhdm.postman_collection.json --environment=docker.postman_environment.json
+    volumes:
+      - type: bind
+        source: ./rhdm-quickstart/postman
+        target: /etc/newman

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fa702455-c7d2-4da2-b284-0de3304ea5f1",
+		"_postman_id": "7311de52-7fde-4c76-b1e4-98f443ae9457",
 		"name": "RHDM Quickstart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -231,6 +231,48 @@
 			"response": []
 		},
 		{
+			"name": "delete rhdm-quickstart",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/rhdm-quickstart",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"rhdm-quickstart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "deploy rhdm-quickstart",
 			"request": {
 				"auth": {
@@ -266,48 +308,6 @@
 					"mode": "raw",
 					"raw": "{\n    \"container-id\": \"rhdm-quickstart\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"rhdm-quickstart\",\n        \"version\": \"1.0.0-SNAPSHOT\"\n    }\n}"
 				},
-				"url": {
-					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/rhdm-quickstart",
-					"protocol": "{{protocol}}",
-					"host": [
-						"{{server}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"{{basePath}}",
-						"containers",
-						"rhdm-quickstart"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete rhdm-quickstart",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{user}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
 				"url": {
 					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/rhdm-quickstart",
 					"protocol": "{{protocol}}",
