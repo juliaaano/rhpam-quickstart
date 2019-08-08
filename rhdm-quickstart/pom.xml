@@ -17,7 +17,7 @@
 
     <name>RHDM Quickstart</name>
     <description>Red Hat Decision Manager project quickstart.</description>
-    <url>https://github.com/juliaaano/rhdm/rhdm-quickstart</url>
+    <url>https://github.com/juliaaano/rhdm-eap-start</url>
 
     <dependencies>
         <!-- Local -->

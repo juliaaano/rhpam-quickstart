@@ -17,7 +17,7 @@
 
     <name>RHDM Event Listener</name>
     <description>Red Hat Decision Manager event listener.</description>
-    <url>https://github.com/juliaaano/rhdm/rhdm-event-listener</url>
+    <url>https://github.com/juliaaano/rhdm-eap-start/rhdm-event-listener</url>
 
     <dependencies>
         <!-- RHDM -->

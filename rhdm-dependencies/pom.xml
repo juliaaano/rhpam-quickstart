@@ -11,7 +11,7 @@
 
     <name>RHDM Dependencies</name>
     <description>Red Had Decision Manager dependencies / parent POM.</description>
-    <url>https://github.com/juliaaano/rhdm/rhdm-dependencies</url>
+    <url>https://github.com/juliaaano/rhdm-eap-start</url>
     <licenses>
         <license>
             <name>MIT License</name>
@@ -29,9 +29,9 @@
     </developers>
 
     <scm>
-        <url>https://github.com/juliaaano/rhdm</url>
-        <connection>scm:git:git@github.com:juliaaano/rhdm.git</connection>
-        <developerConnection>scm:git:git@github.com:juliaaano/rhdm.git</developerConnection>
+        <url>https://github.com/juliaaano/rhdm-eap-start</url>
+        <connection>scm:git:git@github.com:juliaaano/rhdm-eap-start.git</connection>
+        <developerConnection>scm:git:git@github.com:juliaaano/rhdm-eap-start.git</developerConnection>
     </scm>
 
     <properties>
