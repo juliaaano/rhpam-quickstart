@@ -257,7 +257,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/rhdm-quickstart",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}",
 					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
@@ -266,7 +266,7 @@
 					"path": [
 						"{{basePath}}",
 						"containers",
-						"rhdm-quickstart"
+						"{{container-id}}"
 					]
 				}
 			},
@@ -306,10 +306,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"container-id\": \"rhdm-quickstart\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"rhdm-quickstart\",\n        \"version\": \"1.0.0-SNAPSHOT\"\n    }\n}"
+					"raw": "{\n    \"container-id\": \"{{container-id}}\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"{{container-id}}\",\n        \"version\": \"1.0.0-SNAPSHOT\"\n    }\n}"
 				},
 				"url": {
-					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/rhdm-quickstart",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}",
 					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
@@ -318,7 +318,7 @@
 					"path": [
 						"{{basePath}}",
 						"containers",
-						"rhdm-quickstart"
+						"{{container-id}}"
 					]
 				}
 			},
