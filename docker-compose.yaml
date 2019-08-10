@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
 
-  rhdm:
-    image: juliaaano/rhdm-quickstart:local
+  rhdm-jboss:
+    image: juliaaano/rhdm-jboss:local
     environment:
       KIE_ADMIN_USER: user
       KIE_ADMIN_PWD: password
@@ -17,9 +17,15 @@ services:
       # - target: 8888
       #   published: 18888
 
+  rhdm-springboot:
+    image: juliaaano/rhdm-springboot:local
+    ports:
+      - target: 8090
+        published: 18090
+
   postman:
     image: postman/newman:4.5.3-alpine
-    command: run rhdm.postman_collection.json --environment=docker.postman_environment.json
+    command: run rhdm.postman_collection.json --environment=${POSTMAN_ENV:-rhdm-jboss}.postman_environment.json
     volumes:
       - type: bind
         source: ./postman
