@@ -1,6 +1,6 @@
 # RHDM Event Listener
 
-Suitable for KIE Server deployments in JBoss EAP.
+Suitable for KIE Server deployments.
 
 ## Maven
 ```

@@ -11,12 +11,12 @@
         <relativePath>../rhdm-dependencies</relativePath>
     </parent>
 
-    <artifactId>rhdm-quickstart</artifactId>
+    <artifactId>rhdm-kjar</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>kjar</packaging>
 
     <name>RHDM Quickstart</name>
-    <description>Red Hat Decision Manager project quickstart.</description>
+    <description>Red Hat Decision Manager project quickstart kjar.</description>
     <url>https://github.com/juliaaano/rhdm-eap-start</url>
 
     <dependencies>

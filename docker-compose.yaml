@@ -22,5 +22,5 @@ services:
     command: run rhdm.postman_collection.json --environment=docker.postman_environment.json
     volumes:
       - type: bind
-        source: ./rhdm-quickstart/postman
+        source: ./postman
         target: /etc/newman

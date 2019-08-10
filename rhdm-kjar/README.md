@@ -1,8 +1,9 @@
-# RHDM Quickstart
+# RHDM quickstart kjar
 
-Red Hat Decision Manager project quickstart.
-* Ideal to import into Decision Central.
-* Suitable for KIE Server deployments in JBoss EAP.
+Red Hat Decision Manager project quickstart kjar.
+* Use it with Decision Central.
+* Suitable for KIE Server deployments.
+* Check out the different types of rule assets.
 
 ## Dependencies
 Build and install rhdm-dependencies and rhdm-event-listener Maven artifacts found in parent directory.

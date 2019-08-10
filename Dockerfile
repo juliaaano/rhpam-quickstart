@@ -8,15 +8,15 @@ COPY rhdm-event-listener/pom.xml /build/rhdm-event-listener/
 RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode dependency:go-offline
 RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode install -DskipTests
 
-COPY rhdm-quickstart/pom.xml /build/rhdm-quickstart/
-RUN mvn --file build/rhdm-quickstart/pom.xml --batch-mode dependency:go-offline
-RUN mvn --file build/rhdm-quickstart/pom.xml --batch-mode install -DskipTests
+COPY rhdm-kjar/pom.xml /build/rhdm-kjar/
+RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode dependency:go-offline
+RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode install -DskipTests
 
 COPY rhdm-event-listener/src /build/rhdm-event-listener/src/
 RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode --offline install -DskipTests
 
-COPY rhdm-quickstart/src /build/rhdm-quickstart/src/
-RUN mvn --file build/rhdm-quickstart/pom.xml --batch-mode --offline install -DskipTests
+COPY rhdm-kjar/src /build/rhdm-kjar/src/
+RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode --offline install -DskipTests
 
 
 ### EXECUTABLE IMAGE ###
@@ -29,4 +29,4 @@ RUN chown jboss -R /home/jboss/.m2/repository
 USER jboss
 
 ENV KIE_ADMIN_USER=user KIE_ADMIN_PWD=password
-ENV KIE_SERVER_CONTAINER_DEPLOYMENT=rhdm-quickstart=com.juliaaano:rhdm-quickstart:1.0.0-SNAPSHOT
+ENV KIE_SERVER_CONTAINER_DEPLOYMENT=rhdm-quickstart=com.juliaaano:rhdm-kjar:1.0.0-SNAPSHOT

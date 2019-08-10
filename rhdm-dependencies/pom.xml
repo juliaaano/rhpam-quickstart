@@ -92,6 +92,18 @@
 
     <repositories>
         <repository>
+            <!-- Duplicating the Maven Central repository here (as it is already coming from Super POM) makes the build much faster,
+           as the Maven Central is now treated as the first (default) repository.
+           See: https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/kie-user-bom-parent/pom.xml -->
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>jboss-ga-repository</id>
             <url>http://maven.repository.redhat.com/techpreview/all</url>
             <releases>
@@ -103,6 +115,18 @@
         </repository>
     </repositories>
     <pluginRepositories>
+        <pluginRepository>
+            <!-- Duplicating the Maven Central repository here (as it is already coming from Super POM) makes the build much faster,
+           as the Maven Central is now treated as the first (default) repository.
+           See: https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/kie-user-bom-parent/pom.xml -->
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
         <pluginRepository>
             <id>jboss-ga-plugin-repository</id>
             <url>http://maven.repository.redhat.com/techpreview/all</url>
