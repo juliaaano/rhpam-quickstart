@@ -20,13 +20,14 @@
     <url>https://github.com/juliaaano/rhdm-eap-start</url>
 
     <dependencies>
-        <!-- Local -->
+        <!-- local -->
         <dependency>
             <groupId>com.juliaaano</groupId>
             <artifactId>rhdm-event-listener</artifactId>
+            <version>1.0.0</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- Test -->
+        <!-- test -->
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-scenario-simulation-backend</artifactId>
