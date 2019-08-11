@@ -1,0 +1,29 @@
+language: minimal
+
+services:
+  - docker
+
+env:
+ global:
+   - secure: "Rj6lfpIUnlRpNC/Cu0tDxdiYWaxaKzm5fQWIMHOPCt1gVRiluTvlDe3yvM6zUh0doI8D1TgfxbQdkTL3lbcqUdkdsVe1D8F2CMIQJkSuziXBS2xdSRoPUHqYw5lheYZpMG+Cc9L0TkT5WQqVgUxwW/zXk/5RdtZlvflTO6/CJpdZvQuMSbnfQp2mztFwSE56HRYi6Tl3+6lJbPNu6YzLc3uq2Vuws4775C7uADs4emgVnCTKetbS+2kauc40roQwhBY2a1LApW+grrqobgXipST2Jj6xJbBh82p6Dnyr8jZ2lJNYUUp+SzclfLEgl/NxhcGirnr+khZWDhZ2uL334myJjOhDylB0edHa6HJtdsY6h5m452QCYFzH31PCSqaSQFHNa3EHl5Qu/BvepbNH6TGEIAU84Mq1qcYEaVHJBKRGU0ijXqlNjkKBgPQJr11kdjxzvjHn7P7rtEnepYZ6F50gtyU4BAlyluNkSLJ/47Ng4NeNBL69p4o/H63jLx2i/pBkUMDrJkav0s/I8+85waehHFINE9MrLc2sFU24fbAOPONtbEpvwiKoYJzj4gCZ45660J+gg/r9MS6hPfq9dVD19NASAaGA3cbtOMjCBIexZN4VptWya7WvtRkfZBILACwZCCOj25OCQffce8r3S7BytvSit9eL5TDcBGTZKIU="
+   - secure: "f+eoro7dP+gfzk8W5yDtBuFXMiKygnqzNJe7s4qi0796SwIj+0SX4eQlPdvD9+T0/AIxtKIesol08j7lIRsBN1bwDsSsSqOogZESfekEofvKOjjgwmFj0JY4EbY7qeNqOQTwC7PiRkNKkuANrXDHx1Q21caAJd+B15B3B5TVkVPKAH37D1rR43+ZtnCzlkb+pFboEktiROzlxjP4MctNVL6HyGaxM9k77c3tcTWmkbxa+5K3pp/Z7OqbttNLqFW2WJlwp7uhbqfZnix9P3Z+mSl43BdWlyJqx25qcjxrIi2VfwsHP5rtLh/hdzYe6v6m3WeRTKs8F1diPwxIYNfX+ynOsZtKCxeG+ndDE9r9zdDaJLAi7oBTYmtehUEzAgZ+HaCYU09VlcaHsVKTy4totgWINmLUz0YCtVfcvjb/Wg26wdHRSMkLj6Z0gJnYhEAX48eV6XdNKOg20aQMrpwNoRghxlvskqwlpEXnS6ZmT2aJzuZ2iOFxUG14eFyocBTdRWvJTCqqhliIQppKKtee1nGwIXHpPuFrIbOdJLVa8mHp6KDYfbZyz3qs5LXfmFYgk95a1sUR4s8N8sguVzHlmi1jsezvQnQKzdABqVly0CYcUQPuwBKJyAh1RFpGP4t24Pr/H0sWOhjihFMoWyk6zywiGe0fzCCopEZ0h+6kuzM="
+   - secure: "zvF5XlBcD/bl5xAi8CypsVlDr5EhI2+5VXyGk55CEdMWcrXc1qeBwufuOBgrR9t8CcbSUtMMk+g3zKhh7kanHurTbGOEn3uQaUpba+TfLkl/s/4NKXSfJ+n7GvP3CmxABYPn1aqc02UW9Grxq++Pg5UavHvJeQcB/vXa6C45/XFqRvJltN6+2qtcPNX1Bsa/utnp5RDS4HaY8ATka9dOzuM7ZET3RzyxSGYD7SYMKw78NXGLRPaCa6LYt9svhvhomJxGaxcvq0znCQvUxG+xc5cIN9H4DqWCUjFfE+cL7+S12IxG8Teg/wI4l1JLqvVrZbZd18s5ReBkluIAsRh/1T9OT/SJ2m4DvPXvmm9rVdLTNYlS0WMfPFwsN3zzXXJ1OlYOcn6NhoXzWKZbDGbmtwGHAemCr16f7OXjDKM2y4yXVNpO+TTpGGDZx6mJcWkN0z4V/d/KjPvHuOLhSdTlGnAfd3pwfKDOasQuBxILEXIzc0QfxJqz/rjXPuO0T/ZUfkENkJuIma1s1w+w3QcdxSTUSWMJzg3PwBZdntPetHV1S5SnWXyj0MsrC5lAbNSB6TdHddSX/gCJHXPP6G0FJo4437zPw5VDc6o0s7UfgVwIj2G2dFzhJSV/pQiI9yqKxpCVSccRhm6HJCkteti6B3E4iDGSEQfRyR7p9TWZpLI="
+
+before_install:
+  - docker login --username $DOCKERHUB_USR --password $DOCKERHUB_PWD;
+  - docker login --username $REDHAT_USR --password $REDHAT_PWD registry.redhat.io
+
+install:
+  - docker build --file d.jboss.Dockerfile --tag juliaaano/rhdm-jboss:latest .
+  - docker build --file d.springboot.Dockerfile --tag juliaaano/rhdm-springboot:latest .
+
+before_script:
+  - docker-compose up -d --force-recreate rhdm-jboss rhdm-springboot
+  - sleep 90
+
+script:
+  - POSTMAN_ENV=rhdm-jboss docker-compose run --rm postman
+  - POSTMAN_ENV=rhdm-springboot docker-compose run --rm postman
+
+after_success:
+  - for i in $(docker images --format "{{.Repository}}:{{.Tag}}" | grep "juliaaano"); do docker push $i; done

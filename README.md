@@ -6,15 +6,15 @@ A collection of RHDM artifacts to serve as a template for new projects.
 
 ### JBoss EAP
 ```
-docker build --file d.jboss.Dockerfile --tag juliaaano/rhdm-jboss:local .
-docker run --rm --name rhdm-jboss --detach --publish 18080:8080 juliaaano/rhdm-jboss:local
+docker build --file d.jboss.Dockerfile --tag juliaaano/rhdm-jboss .
+docker run --rm --name rhdm-jboss --detach --publish 18080:8080 juliaaano/rhdm-jboss
 docker logs --follow rhdm-jboss
 ```
 
 ### Spring Boot
 ```
-docker build --file d.springboot.Dockerfile --tag juliaaano/rhdm-springboot:local .
-docker run --rm --name rhdm-springboot --detach --publish 18090:8090 juliaaano/rhdm-springboot:local
+docker build --file d.springboot.Dockerfile --tag juliaaano/rhdm-springboot .
+docker run --rm --name rhdm-springboot --detach --publish 18090:8090 juliaaano/rhdm-springboot
 docker logs --follow rhdm-springboot
 ```
 

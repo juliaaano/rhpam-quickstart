@@ -1,9 +1,9 @@
-version: '3.7'
+version: '3.3'
 
 services:
 
   rhdm-jboss:
-    image: juliaaano/rhdm-jboss:local
+    image: juliaaano/rhdm-jboss:latest
     environment:
       KIE_ADMIN_USER: user
       KIE_ADMIN_PWD: password
@@ -18,7 +18,7 @@ services:
       #   published: 18888
 
   rhdm-springboot:
-    image: juliaaano/rhdm-springboot:local
+    image: juliaaano/rhdm-springboot:latest
     ports:
       - target: 8090
         published: 18090
