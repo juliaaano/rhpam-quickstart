@@ -5,13 +5,15 @@ COPY rhdm-dependencies/pom.xml /build/rhdm-dependencies/
 RUN mvn --file build/rhdm-dependencies/pom.xml --batch-mode install
 
 COPY rhdm-event-listener/pom.xml /build/rhdm-event-listener/
-RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode dependency:go-offline install -DskipTests
-
-COPY rhdm-kjar/pom.xml /build/rhdm-kjar/
-RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode dependency:go-offline install -DskipTests
+RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode dependency:go-offline
+# dependency:go-offline does not resolve transitive BOM (from drools-bom), therefore 'install'is required.
+RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode install
 
 COPY rhdm-event-listener/src /build/rhdm-event-listener/src/
 RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode --offline install -DskipTests
+
+COPY rhdm-kjar/pom.xml /build/rhdm-kjar/
+RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode dependency:go-offline
 
 COPY rhdm-kjar/src /build/rhdm-kjar/src/
 RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode --offline install -DskipTests
