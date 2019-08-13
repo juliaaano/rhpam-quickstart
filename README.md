@@ -1,34 +1,49 @@
 # Red Hat Decision Manager 
 
-A collection of RHDM artifacts to serve as a template for new projects.
+A collection of artifacts to get you started with Red Hat Decision Manager.
 
-## Build and run with Docker
+## Get started
 
-### JBoss EAP
+Experiment Decision Manager in two flavors: **JBoss EAP** and **Spring Boot**.
+
+#### JBoss EAP
+
+```
+docker-compose up --detach --force-recreate rhdm-jboss
+docker-compose logs --follow rhdm-jboss
+curl -i -H 'Authorization: Basic dXNlcjpwYXNzd29yZA==' http://localhost:18080/services/rest/server˝
+```
+
+#### Spring Boot
+
+```
+docker-compose up --detach --force-recreate rhdm-springboot
+docker-compose logs --follow rhdm-springboot
+curl -i -H 'Authorization: Basic dXNlcjp1c2Vy' http://localhost:18090/rest/server
+```
+
+## Build with Docker
+
+Access to registry.redhat.io is required to build the JBoss image.
+
 ```
 docker build --file d.jboss.Dockerfile --tag juliaaano/rhdm-jboss .
-docker run --rm --name rhdm-jboss --detach --publish 18080:8080 juliaaano/rhdm-jboss
-docker logs --follow rhdm-jboss
-```
-
-### Spring Boot
-```
 docker build --file d.springboot.Dockerfile --tag juliaaano/rhdm-springboot .
-docker run --rm --name rhdm-springboot --detach --publish 18090:8090 juliaaano/rhdm-springboot
-docker logs --follow rhdm-springboot
 ```
 
-### Running both with Docker Compose
+## Postman
+
+Enjoy a setup of automated tests with Postman/Newman.
+
+Use Docker Compose to bring up the containers and then run:
+
 ```
-docker-compose up --detach --force-recreate rhdm-jboss rhdm-springboot
-docker-compose logs --follow rhdm-jboss rhdm-springboot
+POSTMAN_ENV=rhdm-jboss docker-compose run --rm postman
+POSTMAN_ENV=rhdm-springboot docker-compose run --rm postman
 ```
 
-### Postman
-Once the system is up and running with Docker Compose:
-```
-docker-compose run --rm postman
-```
+## Develop with Java, Maven and Spring Boot
 
-## Maven Spring Boot
-See [rhdm-springboot](rhdm-springboot).
+The rhdm-springboot app is a convenient wat to deploy the kjar and its assets.
+
+See [rhdm-springboot](rhdm-springboot) for more info.
