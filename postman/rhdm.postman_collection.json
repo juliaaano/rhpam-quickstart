@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7311de52-7fde-4c76-b1e4-98f443ae9457",
+		"_postman_id": "83fdf082-3763-4da9-9332-104bff0b8863",
 		"name": "RHDM Quickstart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -326,6 +326,25 @@
 		},
 		{
 			"name": "fire-all-rules",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "15a61f96-0755-42e4-8842-718870d1eabd",
+						"exec": [
+							"const jsonBody = pm.response.json();",
+							"",
+							"const resultBody = jsonBody.result[\"execution-results\"][\"results\"][0][\"value\"][\"org.drools.core.runtime.rule.impl.FlatQueryResults\"][\"idResultMaps\"][\"element\"][0][\"element\"][0][\"value\"][\"com.juliaaano.rhdm.data.Greeting\"];",
+							"",
+							"pm.test(\"Greeting is 'Hello, John!'\", function() {",
+							"    pm.expect(resultBody).to.have.property(\"greeting\", \"Hello, John!\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -379,6 +398,25 @@
 		},
 		{
 			"name": "start-process",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c18d21e6-477f-4f8b-ac46-18927fa795c5",
+						"exec": [
+							"const jsonBody = pm.response.json();",
+							"",
+							"const resultBody = jsonBody.result[\"execution-results\"][\"results\"][0][\"value\"][\"org.drools.core.runtime.rule.impl.FlatQueryResults\"][\"idResultMaps\"][\"element\"][0][\"element\"][0][\"value\"][\"com.juliaaano.rhdm.data.Greeting\"];",
+							"",
+							"pm.test(\"Greeting is 'Hello, Anonymous!'\", function() {",
+							"    pm.expect(resultBody).to.have.property(\"greeting\", \"Hello, Anonymous!\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
