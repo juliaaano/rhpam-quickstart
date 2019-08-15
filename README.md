@@ -1,4 +1,5 @@
 # Red Hat Decision Manager 
+[![Build Status](https://travis-ci.org/juliaaano/rhdm-quickstart.svg)](https://travis-ci.org/juliaaano/rhdm-quickstart)
 
 A collection of artifacts to get you started with Red Hat Decision Manager.
 
@@ -11,7 +12,7 @@ Experiment Decision Manager in two flavors: **JBoss EAP** and **Spring Boot**.
 ```
 docker-compose up --detach --force-recreate rhdm-jboss
 docker-compose logs --follow rhdm-jboss
-curl -i -H 'Authorization: Basic dXNlcjpwYXNzd29yZA==' http://localhost:18080/services/rest/server˝
+curl -i -H 'Authorization: Basic dXNlcjpwYXNzd29yZA==' http://localhost:18080/services/rest/server
 ```
 
 #### Spring Boot
