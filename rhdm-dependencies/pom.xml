@@ -6,7 +6,7 @@
 
     <groupId>com.juliaaano</groupId>
     <artifactId>rhdm-dependencies</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
 
     <name>RHDM Dependencies</name>
@@ -39,10 +39,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <kie.version>7.23.0.Final-redhat-00002</kie.version>
-        <slf4j.version>1.7.26</slf4j.version>
+        <kie.version>7.30.0.Final-redhat-00003</kie.version>
+        <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.3</logback.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13</junit.version>
         <assertj.version>3.12.2</assertj.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>

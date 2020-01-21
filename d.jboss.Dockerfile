@@ -20,7 +20,7 @@ RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode --offline install -DskipTest
 
 
 ### EXECUTABLE IMAGE ###
-FROM registry.redhat.io/rhdm-7/rhdm74-kieserver-openshift
+FROM registry.redhat.io/rhdm-7/rhdm-kieserver-rhel8:7.6.0
 
 COPY --from=builder /root/.m2/repository /home/jboss/.m2/repository/
 
@@ -29,4 +29,4 @@ RUN chown jboss -R /home/jboss/.m2/repository
 USER jboss
 
 ENV KIE_ADMIN_USER=user KIE_ADMIN_PWD=password
-ENV KIE_SERVER_CONTAINER_DEPLOYMENT=rhdm-quickstart=com.juliaaano:rhdm-kjar:1.0.0-SNAPSHOT
+ENV KIE_SERVER_CONTAINER_DEPLOYMENT=rhdm-quickstart=com.juliaaano:rhdm-kjar:1.0.1-SNAPSHOT

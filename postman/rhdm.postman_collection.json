@@ -306,7 +306,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"container-id\": \"{{container-id}}\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"rhdm-kjar\",\n        \"version\": \"1.0.0-SNAPSHOT\"\n    }\n}"
+					"raw": "{\n    \"container-id\": \"{{container-id}}\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"rhdm-kjar\",\n        \"version\": \"1.0.1-SNAPSHOT\"\n    }\n}"
 				},
 				"url": {
 					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}",
