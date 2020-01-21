@@ -1,94 +1,96 @@
-package com.juliaaano.rhdm;
+// This class is commented so Business Central can compile.
 
-import static java.util.stream.Collectors.toList;
-import static org.assertj.core.api.Assertions.assertThat;
+// package com.juliaaano.rhdm;
 
-import java.util.List;
-import java.util.Optional;
+// import static java.util.stream.Collectors.toList;
+// import static org.assertj.core.api.Assertions.assertThat;
 
-import com.juliaaano.rhdm.data.Greeting;
-import com.juliaaano.rhdm.data.Person;
+// import java.util.List;
+// import java.util.Optional;
 
-import org.junit.Test;
-import org.kie.api.KieServices;
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
+// import com.juliaaano.rhdm.data.Greeting;
+// import com.juliaaano.rhdm.data.Person;
 
-public class GreetingTest {
+// import org.junit.Test;
+// import org.kie.api.KieServices;
+// import org.kie.api.runtime.KieContainer;
+// import org.kie.api.runtime.KieSession;
 
-    @Test
-    public void test_greeting_from_decision_table() {
+// public class GreetingTest {
 
-        KieServices ks = KieServices.Factory.get();
-        KieContainer kcontainer = ks.getKieClasspathContainer();
+//     @Test
+//     public void test_greeting_from_decision_table() {
 
-        KieSession ksession = kcontainer.newKieSession("StatefulKS");
+//         KieServices ks = KieServices.Factory.get();
+//         KieContainer kcontainer = ks.getKieClasspathContainer();
 
-        Person person = new Person();
-        person.setName("James");
+//         KieSession ksession = kcontainer.newKieSession("StatefulKS");
 
-        ksession.insert(person);
-        ksession.fireAllRules();
+//         Person person = new Person();
+//         person.setName("James");
 
-        Optional<Greeting> greeting = ksession.getObjects().stream().filter(object -> object instanceof Greeting)
-                .map(object -> (Greeting) object).findAny();
+//         ksession.insert(person);
+//         ksession.fireAllRules();
 
-        ksession.dispose();
+//         Optional<Greeting> greeting = ksession.getObjects().stream().filter(object -> object instanceof Greeting)
+//                 .map(object -> (Greeting) object).findAny();
 
-        assertThat(greeting).isPresent();
-        assertThat(greeting.get().getGreeting()).isEqualTo("Hey, James!");
-    }
+//         ksession.dispose();
 
-    @Test
-    public void test_greeting_from_template() {
+//         assertThat(greeting).isPresent();
+//         assertThat(greeting.get().getGreeting()).isEqualTo("Hey, James!");
+//     }
 
-        KieServices ks = KieServices.Factory.get();
-        KieContainer kcontainer = ks.getKieClasspathContainer();
+//     @Test
+//     public void test_greeting_from_template() {
 
-        KieSession ksession = kcontainer.newKieSession("StatefulKS");
+//         KieServices ks = KieServices.Factory.get();
+//         KieContainer kcontainer = ks.getKieClasspathContainer();
 
-        Person robert = new Person();
-        robert.setName("Robert");
-        robert.setSurname("Jones");
+//         KieSession ksession = kcontainer.newKieSession("StatefulKS");
 
-        Person michael = new Person();
-        michael.setName("Michael");
-        michael.setSurname("Jones");
+//         Person robert = new Person();
+//         robert.setName("Robert");
+//         robert.setSurname("Jones");
 
-        ksession.insert(robert);
-        ksession.insert(michael);
-        ksession.fireAllRules();
+//         Person michael = new Person();
+//         michael.setName("Michael");
+//         michael.setSurname("Jones");
 
-        List<String> greetings = ksession.getObjects().stream().filter(obj -> obj instanceof Greeting)
-                .map(obj -> ((Greeting) obj).getGreeting()).collect(toList());
+//         ksession.insert(robert);
+//         ksession.insert(michael);
+//         ksession.fireAllRules();
 
-        ksession.dispose();
+//         List<String> greetings = ksession.getObjects().stream().filter(obj -> obj instanceof Greeting)
+//                 .map(obj -> ((Greeting) obj).getGreeting()).collect(toList());
 
-        assertThat(greetings).hasSize(2);
-        assertThat(greetings).contains("Whats up, Robert!", "Greetings, Michael!");
-    }
+//         ksession.dispose();
 
-    @Test
-    public void test_greeting_from_drl() {
+//         assertThat(greetings).hasSize(2);
+//         assertThat(greetings).contains("Whats up, Robert!", "Greetings, Michael!");
+//     }
 
-        KieServices ks = KieServices.Factory.get();
-        KieContainer kcontainer = ks.getKieClasspathContainer();
+//     @Test
+//     public void test_greeting_from_drl() {
 
-        KieSession ksession = kcontainer.newKieSession("StatefulKS");
+//         KieServices ks = KieServices.Factory.get();
+//         KieContainer kcontainer = ks.getKieClasspathContainer();
 
-        Person person = new Person();
-        person.setName("John");
-        person.setSurname("Smith");
+//         KieSession ksession = kcontainer.newKieSession("StatefulKS");
 
-        ksession.insert(person);
-        ksession.fireAllRules();
+//         Person person = new Person();
+//         person.setName("John");
+//         person.setSurname("Smith");
 
-        Optional<Greeting> greeting = ksession.getObjects().stream().filter(object -> object instanceof Greeting)
-                .map(object -> (Greeting) object).findAny();
+//         ksession.insert(person);
+//         ksession.fireAllRules();
 
-        ksession.dispose();
+//         Optional<Greeting> greeting = ksession.getObjects().stream().filter(object -> object instanceof Greeting)
+//                 .map(object -> (Greeting) object).findAny();
 
-        assertThat(greeting).isPresent();
-        assertThat(greeting.get().getGreeting()).isEqualTo("Hello, John!");
-    }
-}
+//         ksession.dispose();
+
+//         assertThat(greeting).isPresent();
+//         assertThat(greeting.get().getGreeting()).isEqualTo("Hello, John!");
+//     }
+// }
