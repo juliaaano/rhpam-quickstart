@@ -47,7 +47,13 @@ POSTMAN_ENV=rhdm-springboot docker-compose run --rm postman
 
 The rhdm-kjar (RHDM Quickstart) project can be imported in Business Central. However, in order to build, it needs rhdm-dependencies and rhdm-event-listener dependencies to be installed in the host.
 
-**mvn install** both rhdm-dependencies and rhdm-event-listener.
+* **mvn install** both rhdm-dependencies and rhdm-event-listener.
+
+## Install Decision Manager
+
+For the installation of Decision Manager, visit:
+
+* https://github.com/juliaaano/rhdm-eap-ansible
 
 ## Develop with Java, Maven and Spring Boot
 
