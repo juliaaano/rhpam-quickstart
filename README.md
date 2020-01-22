@@ -43,6 +43,12 @@ POSTMAN_ENV=rhdm-jboss docker-compose run --rm postman
 POSTMAN_ENV=rhdm-springboot docker-compose run --rm postman
 ```
 
+## Import and develop in Business Central
+
+The rhdm-kjar (RHDM Quickstart) project can be imported in Business Central. However, in order to build, it needs rhdm-dependencies and rhdm-event-listener dependencies to be installed in the host.
+
+**mvn install** both rhdm-dependencies and rhdm-event-listener.
+
 ## Develop with Java, Maven and Spring Boot
 
 The rhdm-springboot app is a convenient wat to deploy the kjar and its assets.
