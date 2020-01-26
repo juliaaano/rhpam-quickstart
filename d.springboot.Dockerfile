@@ -1,3 +1,11 @@
+# This Dockerfile is divided in 3 stages:
+# 1. Builder image for the KJAR.
+# 2. Builder image for the executable Spring Boot fat jar.
+# 3. Executable image with just the JDK and the app fat jar.
+# Maven 'dependency:go-offline' followed by '--offline install' is used to leverage
+# the Docker caching so builds are faster after the first time.
+
+
 ### DEPENDENCIES BUILDER IMAGE ###
 FROM maven:3-jdk-8-slim as builder-deps
 

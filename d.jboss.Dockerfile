@@ -1,3 +1,9 @@
+# This Dockerfile is divided in two stages, the first is a builder for the KJAR
+# and the second is the executable image (KIE Server + KJAR).
+# Maven 'dependency:go-offline' followed by '--offline install' is used to leverage
+# the Docker caching so builds are faster after the first time.
+
+
 ### BUILDER IMAGE ###
 FROM maven:3-jdk-8-slim as builder
 
