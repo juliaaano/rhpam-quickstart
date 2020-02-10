@@ -35,4 +35,4 @@ RUN chown jboss -R /home/jboss/.m2/repository
 USER jboss
 
 ENV KIE_ADMIN_USER=user KIE_ADMIN_PWD=password
-ENV KIE_SERVER_CONTAINER_DEPLOYMENT=rhdm-quickstart=com.juliaaano:rhdm-kjar:1.0.1-SNAPSHOT
+ENV KIE_SERVER_CONTAINER_DEPLOYMENT=rhdm-quickstart=com.juliaaano:rhdm-kjar:1.0.2-SNAPSHOT

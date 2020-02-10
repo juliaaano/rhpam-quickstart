@@ -7,12 +7,12 @@
     <parent>
         <groupId>com.juliaaano</groupId>
         <artifactId>rhdm-dependencies</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <relativePath>../rhdm-dependencies</relativePath>
     </parent>
 
     <artifactId>rhdm-kjar</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>kjar</packaging>
 
     <name>RHDM Quickstart</name>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.juliaaano</groupId>
             <artifactId>rhdm-event-listener</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
             <scope>runtime</scope>
         </dependency>
         <!-- test -->

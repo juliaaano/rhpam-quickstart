@@ -31,3 +31,5 @@ script:
 
 after_success:
   - for i in $(docker images --format "{{.Repository}}:{{.Tag}}" | grep "juliaaano"); do docker push $i; done
+  - docker logout registry.redhat.io
+  - docker logout
