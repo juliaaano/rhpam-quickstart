@@ -1,0 +1,3 @@
+[submodule "rhdm-dependencies"]
+	path = rhdm-dependencies
+	url = https://github.com/juliaaano/rhdm-dependencies.git
