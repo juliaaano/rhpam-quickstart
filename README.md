@@ -1,5 +1,5 @@
 # Red Hat Decision Manager 
-[![Build Status](https://travis-ci.org/juliaaano/rhdm-quickstart.svg)](https://travis-ci.org/juliaaano/rhdm-quickstart)
+[![Build Status](https://travis-ci.com/juliaaano/rhdm-quickstart.svg)](https://travis-ci.com/juliaaano/rhdm-quickstart)
 
 A collection of artifacts to get you started with Red Hat Decision Manager.
 
