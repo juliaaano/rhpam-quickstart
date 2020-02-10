@@ -7,7 +7,15 @@ A collection of artifacts to get you started with Red Hat Decision Manager.
 
 Experiment Decision Manager in two flavors: **JBoss EAP** and **Spring Boot**.
 
-#### JBoss EAP
+## Import and develop in Business Central
+
+Use the URL of this repo in Business Central.
+
+* The rhdm-kjar gets selected for import.
+* There is a dependency on **rhdm-dependencies** and **rhdm-event-listener**, but they are available in Maven Central.
+* For development, use the SNAPSHOT versions and build dependencies locally.
+
+#### JBoss EAP with Docker
 
 ```
 docker-compose up --detach --force-recreate rhdm-jboss
@@ -15,7 +23,7 @@ docker-compose logs --follow rhdm-jboss
 curl -i -H 'Authorization: Basic dXNlcjpwYXNzd29yZA==' http://localhost:18080/services/rest/server
 ```
 
-#### Spring Boot
+#### Spring Boot with Docker
 
 ```
 docker-compose up --detach --force-recreate rhdm-springboot
@@ -25,7 +33,7 @@ curl -i -H 'Authorization: Basic dXNlcjp1c2Vy' http://localhost:18090/rest/serve
 
 ## Build with Docker
 
-Access to registry.redhat.io is required to build the JBoss image.
+Access to **registry.redhat.io** (docker login) is required to build the JBoss image.
 
 ```
 docker build --file d.jboss.Dockerfile --tag juliaaano/rhdm-jboss .
@@ -42,12 +50,6 @@ Use Docker Compose to bring up the containers and then run:
 POSTMAN_ENV=rhdm-jboss docker-compose run --rm postman
 POSTMAN_ENV=rhdm-springboot docker-compose run --rm postman
 ```
-
-## Import and develop in Business Central
-
-The rhdm-kjar (RHDM Quickstart) project can be imported in Business Central. However, in order to build, it needs rhdm-dependencies and rhdm-event-listener dependencies to be installed in the host.
-
-* **mvn install** both rhdm-dependencies and rhdm-event-listener.
 
 ## Install Decision Manager
 

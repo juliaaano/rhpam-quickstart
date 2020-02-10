@@ -8,7 +8,7 @@
         <groupId>com.juliaaano</groupId>
         <artifactId>rhdm-dependencies</artifactId>
         <version>1.0.2</version>
-        <relativePath>../rhdm-dependencies</relativePath>
+        <!-- <version>1.0.3-SNAPSHOT</version> -->
     </parent>
 
     <artifactId>rhdm-kjar</artifactId>
@@ -25,6 +25,7 @@
             <groupId>com.juliaaano</groupId>
             <artifactId>rhdm-event-listener</artifactId>
             <version>1.0.2</version>
+            <!-- <version>1.0.3-SNAPSHOT</version> -->
             <scope>runtime</scope>
         </dependency>
         <!-- test -->
