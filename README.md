@@ -3,10 +3,6 @@
 
 A collection of artifacts to get you started with Red Hat Decision Manager.
 
-## Get started
-
-Experiment Decision Manager in two flavors: **JBoss EAP** and **Spring Boot**.
-
 ## Import and develop in Business Central
 
 Use the URL of this repo in Business Central.
@@ -14,6 +10,10 @@ Use the URL of this repo in Business Central.
 * The rhdm-kjar gets selected for import.
 * There is a dependency on **rhdm-dependencies** and **rhdm-event-listener**, but they are available in Maven Central.
 * For development, use the SNAPSHOT versions and build dependencies locally.
+
+## Get started
+
+Experiment Decision Manager in two flavors: **JBoss EAP** and **Spring Boot**.
 
 #### JBoss EAP with Docker
 
