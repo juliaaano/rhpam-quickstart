@@ -1,124 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.7.RELEASE</version>
-    </parent>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.7.RELEASE</version>
+  </parent>
 
-    <groupId>com.juliaaano</groupId>
-    <artifactId>rhdm-springboot</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+  <groupId>com.juliaaano</groupId>
+  <artifactId>rhdm-springboot</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
-    <name>RHDM Spring Boot</name>
-    <description>Red Hat Decision Manager with Spring Boot.</description>
+  <name>RHDM Spring Boot</name>
+  <description>Red Hat Decision Manager with Spring Boot.</description>
+  <url>https://github.com/juliaaano/rhdm-quickstart</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://www.juliaaano.com/LICENSE</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Juliano Boesel Mohr</name>
+      <email>juliaaano@gmail.com</email>
+      <organization>Juliaaano</organization>
+      <organizationUrl>https://www.juliaaano.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
     <url>https://github.com/juliaaano/rhdm-quickstart</url>
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>https://www.juliaaano.com/LICENSE</url>
-        </license>
-    </licenses>
+    <connection>scm:git:git@github.com:juliaaano/rhdm-quickstart.git</connection>
+    <developerConnection>scm:git:git@github.com:juliaaano/rhdm-quickstart.git</developerConnection>
+  </scm>
 
-    <developers>
-        <developer>
-            <name>Juliano Boesel Mohr</name>
-            <email>juliaaano@gmail.com</email>
-            <organization>Juliaaano</organization>
-            <organizationUrl>https://www.juliaaano.com</organizationUrl>
-        </developer>
-    </developers>
+  <properties>
+    <kie.version>7.30.0.Final-redhat-00003</kie.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
 
-    <scm>
-        <url>https://github.com/juliaaano/rhdm-quickstart</url>
-        <connection>scm:git:git@github.com:juliaaano/rhdm-quickstart.git</connection>
-        <developerConnection>scm:git:git@github.com:juliaaano/rhdm-quickstart.git</developerConnection>
-    </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-server-spring-boot-starter-drools</artifactId>
+      <version>${kie.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-    <properties>
-        <kie.version>7.30.0.Final-redhat-00003</kie.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-server-spring-boot-starter-drools</artifactId>
-            <version>${kie.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <repositories>
-        <repository>
-            <!-- Duplicating the Maven Central repository here (as it is already coming from Super POM) makes the build much faster,
+  <repositories>
+    <repository>
+      <!-- Duplicating the Maven Central repository here (as it is already coming from Super POM) makes the build much faster,
            as the Maven Central is now treated as the first (default) repository.
            See: https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/kie-user-bom-parent/pom.xml -->
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <layout>default</layout>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>jboss-ga-repository</id>
-            <url>http://maven.repository.redhat.com/techpreview/all</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <!-- Duplicating the Maven Central repository here (as it is already coming from Super POM) makes the build much faster,
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jboss-ga-repository</id>
+      <url>http://maven.repository.redhat.com/techpreview/all</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <!-- Duplicating the Maven Central repository here (as it is already coming from Super POM) makes the build much faster,
            as the Maven Central is now treated as the first (default) repository.
            See: https://github.com/kiegroup/droolsjbpm-build-bootstrap/blob/master/kie-user-bom-parent/pom.xml -->
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-            <layout>default</layout>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>jboss-ga-plugin-repository</id>
-            <url>http://maven.repository.redhat.com/techpreview/all</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>jboss-ga-plugin-repository</id>
+      <url>http://maven.repository.redhat.com/techpreview/all</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
-    <profiles />
+  <profiles />
 
 </project>
