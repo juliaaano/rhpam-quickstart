@@ -2,8 +2,8 @@ version: '3.3'
 
 services:
 
-  rhdm-jboss:
-    image: juliaaano/rhdm-jboss:latest
+  rhpam-jboss:
+    image: juliaaano/rhpam-jboss:latest
     environment:
       KIE_ADMIN_USER: user
       KIE_ADMIN_PWD: password
@@ -17,15 +17,15 @@ services:
       # - target: 8888
       #   published: 18888
 
-  rhdm-springboot:
-    image: juliaaano/rhdm-springboot:latest
+  rhpam-springboot:
+    image: juliaaano/rhpam-springboot:latest
     ports:
       - target: 8090
         published: 18090
 
   postman:
     image: postman/newman:4.5.3-alpine
-    command: run rhdm.postman_collection.json --environment=${POSTMAN_ENV:-rhdm-jboss}.postman_environment.json
+    command: run rhpam.postman_collection.json --environment=${POSTMAN_ENV:-rhpam-jboss}.postman_environment.json
     volumes:
       - type: bind
         source: ./postman

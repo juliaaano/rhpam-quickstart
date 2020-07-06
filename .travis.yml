@@ -18,16 +18,16 @@ before_install:
   - echo "$REDHAT_PWD" | docker login --username "$REDHAT_USR" --password-stdin registry.redhat.io
 
 install:
-  - docker build --file d.jboss.Dockerfile --tag juliaaano/rhdm-jboss:latest .
-  - docker build --file d.springboot.Dockerfile --tag juliaaano/rhdm-springboot:latest .
+  - docker build --file d.jboss.Dockerfile --tag juliaaano/rhpam-jboss:latest .
+  - docker build --file d.springboot.Dockerfile --tag juliaaano/rhpam-springboot:latest .
 
 before_script:
-  - docker-compose up -d --force-recreate rhdm-jboss rhdm-springboot
+  - docker-compose up -d --force-recreate rhpam-jboss rhpam-springboot
   - sleep 90
 
 script:
-  - POSTMAN_ENV=rhdm-jboss docker-compose run --rm postman
-  - POSTMAN_ENV=rhdm-springboot docker-compose run --rm postman
+  - POSTMAN_ENV=rhpam-jboss docker-compose run --rm postman
+  - POSTMAN_ENV=rhpam-springboot docker-compose run --rm postman
 
 after_success:
   - for i in $(docker images --format "{{.Repository}}:{{.Tag}}" | grep "juliaaano"); do docker push $i; done

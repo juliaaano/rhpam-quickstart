@@ -1,0 +1,22 @@
+template header
+name
+surname
+greeting
+
+package com.juliaaano.rhpam.template;
+
+import com.juliaaano.rhpam.data.Person;
+import com.juliaaano.rhpam.data.Greeting;
+
+template "greetings"
+
+rule "Greeting_@{row.rowNumber}"
+when
+    Person(name == "@{name}", surname == "@{surname}")
+then
+    Greeting grt = new Greeting();
+    grt.setGreeting("@{greeting}");
+    insert ( grt );
+end
+
+end template

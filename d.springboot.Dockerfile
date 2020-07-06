@@ -9,38 +9,38 @@
 ### DEPENDENCIES BUILDER IMAGE ###
 FROM maven:3-jdk-8-slim as builder-deps
 
-COPY rhdm-dependencies/pom.xml /build/rhdm-dependencies/
-RUN mvn --file build/rhdm-dependencies/pom.xml --batch-mode install
+COPY rhpam-dependencies/pom.xml /build/rhpam-dependencies/
+RUN mvn --file build/rhpam-dependencies/pom.xml --batch-mode install
 
-COPY rhdm-event-listener/pom.xml /build/rhdm-event-listener/
-RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode dependency:go-offline
+COPY rhpam-event-listener/pom.xml /build/rhpam-event-listener/
+RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode dependency:go-offline
 # dependency:go-offline does not resolve transitive BOM (from drools-bom), therefore 'install'is required.
-RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode install
+RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode install
 
-COPY rhdm-event-listener/src /build/rhdm-event-listener/src/
-RUN mvn --file build/rhdm-event-listener/pom.xml --batch-mode --offline install -DskipTests
+COPY rhpam-event-listener/src /build/rhpam-event-listener/src/
+RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode --offline install -DskipTests
 
-COPY rhdm-kjar/pom.xml /build/rhdm-kjar/
-RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode dependency:go-offline
+COPY rhpam-kjar/pom.xml /build/rhpam-kjar/
+RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode dependency:go-offline
 
-COPY rhdm-kjar/src /build/rhdm-kjar/src/
-RUN mvn --file build/rhdm-kjar/pom.xml --batch-mode --offline install -DskipTests
+COPY rhpam-kjar/src /build/rhpam-kjar/src/
+RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode --offline install -DskipTests
 
 
 ### APP BUILDER IMAGE ###
 FROM maven:3-jdk-8-slim as builder-app
 
-COPY rhdm-springboot/pom.xml /build/
+COPY rhpam-springboot/pom.xml /build/
 
 RUN mvn --file build/pom.xml --batch-mode dependency:go-offline
 
-COPY rhdm-springboot/src /build/src/
+COPY rhpam-springboot/src /build/src/
 
 RUN mvn --file build/pom.xml --batch-mode --offline package -DskipTests \
     && mkdir app \
     && mv build/target/*.jar app/app.jar
 
-COPY rhdm-springboot/rhdm-springboot.xml /app/
+COPY rhpam-springboot/rhpam-springboot.xml /app/
 
 
 ### EXECUTABLE IMAGE ###
