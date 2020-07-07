@@ -48,7 +48,7 @@ Use Docker Compose to bring up the containers and then run:
 
 ```
 POSTMAN_ENV=rhpam-container-jboss docker-compose run --rm postman
-POSTMAN_ENV=rhpam-springboot docker-compose run --rm postman
+POSTMAN_ENV=rhpam-container-springboot docker-compose run --rm postman
 ```
 
 ## Install Process Automation Manager

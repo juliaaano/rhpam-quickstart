@@ -51,7 +51,7 @@
   <dependencies>
     <dependency>
       <groupId>org.kie</groupId>
-      <artifactId>kie-server-spring-boot-starter-drools</artifactId>
+      <artifactId>kie-server-spring-boot-starter</artifactId>
       <version>${kie.version}</version>
     </dependency>
     <dependency>
@@ -119,6 +119,19 @@
     </plugins>
   </build>
 
-  <profiles />
+  <profiles>
+    <profile>
+      <id>h2</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 
 </project>
