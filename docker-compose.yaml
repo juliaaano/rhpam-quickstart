@@ -5,8 +5,9 @@ services:
   rhpam-jboss:
     image: juliaaano/rhpam-jboss:latest
     environment:
-      KIE_ADMIN_USER: user
+      KIE_ADMIN_USER: adminUser
       KIE_ADMIN_PWD: password
+      KIE_SERVER_BYPASS_AUTH_USER: "true"
     ports:
       - target: 8080
         published: 18080

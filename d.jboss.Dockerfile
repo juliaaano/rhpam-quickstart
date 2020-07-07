@@ -34,5 +34,5 @@ USER root
 RUN chown jboss -R /home/jboss/.m2/repository
 USER jboss
 
-ENV KIE_ADMIN_USER=user KIE_ADMIN_PWD=password
+ENV KIE_ADMIN_USER=adminUser KIE_ADMIN_PWD=password
 ENV KIE_SERVER_CONTAINER_DEPLOYMENT=rhpam-quickstart=com.juliaaano:rhpam-kjar:1.0.0-SNAPSHOT
