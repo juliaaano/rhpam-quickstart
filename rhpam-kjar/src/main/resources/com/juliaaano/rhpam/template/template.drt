@@ -10,13 +10,13 @@ import com.juliaaano.rhpam.data.Greeting;
 
 template "greetings"
 
-rule "Greeting_@{row.rowNumber}"
+rule "Template_Greeting_@{row.rowNumber}"
+ruleflow-group "greetings"
 when
     Person(name == "@{name}", surname == "@{surname}")
+    $grt: Greeting()
 then
-    Greeting grt = new Greeting();
-    grt.setGreeting("@{greeting}");
-    insert ( grt );
+    $grt.setGreeting("@{greeting}");
 end
 
 end template

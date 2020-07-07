@@ -1,7 +1,12 @@
 <rule>
   <name>guided-rule-template</name>
   <modelVersion>1.0</modelVersion>
-  <attributes/>
+  <attributes>
+    <attribute>
+      <attributeName>ruleflow-group</attributeName>
+      <value>greetings</value>
+    </attribute>
+  </attributes>
   <metadataList/>
   <lhs>
     <fact>
@@ -41,9 +46,17 @@
         <parameters/>
       </window>
     </fact>
+    <fact>
+      <factType>Greeting</factType>
+      <boundName>$greeting</boundName>
+      <isNegated>false</isNegated>
+      <window>
+        <parameters/>
+      </window>
+    </fact>
   </lhs>
   <rhs>
-    <assert>
+    <setField>
       <fieldValues>
         <fieldValue>
           <field>greeting</field>
@@ -52,9 +65,8 @@
           <type>String</type>
         </fieldValue>
       </fieldValues>
-      <factType>Greeting</factType>
-      <isBound>false</isBound>
-    </assert>
+      <variable>$greeting</variable>
+    </setField>
   </rhs>
   <imports>
     <imports>
@@ -86,7 +98,7 @@
     <entry>
       <string>$greeting</string>
       <list>
-        <string>Hi, Brian!</string>
+        <string>How are things, Brian?</string>
         <string>Gday, Charles!</string>
       </list>
     </entry>
