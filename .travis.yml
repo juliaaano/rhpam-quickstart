@@ -26,7 +26,7 @@ before_script:
   - sleep 90
 
 script:
-  - POSTMAN_ENV=rhpam-jboss docker-compose run --rm postman
+  - POSTMAN_ENV=rhpam-container-jboss docker-compose run --rm postman
   - POSTMAN_ENV=rhpam-springboot docker-compose run --rm postman
 
 after_success:

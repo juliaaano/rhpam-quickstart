@@ -47,7 +47,7 @@ Enjoy a setup of automated tests with Postman/Newman.
 Use Docker Compose to bring up the containers and then run:
 
 ```
-POSTMAN_ENV=rhpam-jboss docker-compose run --rm postman
+POSTMAN_ENV=rhpam-container-jboss docker-compose run --rm postman
 POSTMAN_ENV=rhpam-springboot docker-compose run --rm postman
 ```
 

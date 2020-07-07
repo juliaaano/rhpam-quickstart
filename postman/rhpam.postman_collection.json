@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "83fdf082-3763-4da9-9332-104bff0b8863",
+		"_postman_id": "d94617ed-3e77-4002-b0cc-e7c5c1155684",
 		"name": "RHPAM Quickstart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -146,7 +146,7 @@
 			"response": []
 		},
 		{
-			"name": "container rhpam-quickstart",
+			"name": "container",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -188,7 +188,7 @@
 			"response": []
 		},
 		{
-			"name": "release-id rhpam-quickstart",
+			"name": "release-id",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -231,7 +231,7 @@
 			"response": []
 		},
 		{
-			"name": "delete rhpam-quickstart",
+			"name": "delete container",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -273,7 +273,7 @@
 			"response": []
 		},
 		{
-			"name": "deploy rhpam-quickstart",
+			"name": "deploy container",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -306,7 +306,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"container-id\": \"{{container-id}}\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"rhpam-kjar\",\n        \"version\": \"1.0.0-SNAPSHOT\"\n    }\n}"
+					"raw": "{\n    \"container-id\": \"rhdm-quickstart\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"rhdm-kjar\",\n        \"version\": \"1.0.3-SNAPSHOT\"\n    }\n}"
 				},
 				"url": {
 					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}",
@@ -334,7 +334,7 @@
 						"exec": [
 							"const jsonBody = pm.response.json();",
 							"",
-							"const resultBody = jsonBody.result[\"execution-results\"][\"results\"][0][\"value\"][\"org.drools.core.runtime.rule.impl.FlatQueryResults\"][\"idResultMaps\"][\"element\"][0][\"element\"][0][\"value\"][\"com.juliaaano.rhpam.data.Greeting\"];",
+							"const resultBody = jsonBody.result[\"execution-results\"][\"results\"][0][\"value\"][\"org.drools.core.runtime.rule.impl.FlatQueryResults\"][\"idResultMaps\"][\"element\"][0][\"element\"][0][\"value\"][\"com.juliaaano.rhdm.data.Greeting\"];",
 							"",
 							"pm.test(\"Greeting is 'Hello, John!'\", function() {",
 							"    pm.expect(resultBody).to.have.property(\"greeting\", \"Hello, John!\");",
@@ -397,20 +397,133 @@
 			"response": []
 		},
 		{
-			"name": "start-process",
+			"name": "start-myprocess",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"person\": {\n        \"com.juliaaano.rhpam.data.Person\": {\n            \"name\": \"James\",\n            \"surname\": \"Smith23\"\n        }\n    },\n    \"fetchUrl\": \"http://demo2247207.mockable.io/greeting\"\n}"
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/processes/rhpam-quickstart.myprocess/instances",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"processes",
+						"rhpam-quickstart.myprocess",
+						"instances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tasks assigned redhat",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "c18d21e6-477f-4f8b-ac46-18927fa795c5",
+						"id": "1fdf3165-12cf-455d-94af-bfa529ffdafd",
 						"exec": [
-							"const jsonBody = pm.response.json();",
-							"",
-							"const resultBody = jsonBody.result[\"execution-results\"][\"results\"][0][\"value\"][\"org.drools.core.runtime.rule.impl.FlatQueryResults\"][\"idResultMaps\"][\"element\"][0][\"element\"][0][\"value\"][\"com.juliaaano.rhpam.data.Greeting\"];",
-							"",
-							"pm.test(\"Greeting is 'Hello, Anonymous!'\", function() {",
-							"    pm.expect(resultBody).to.have.property(\"greeting\", \"Hello, Anonymous!\");",
-							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"task-id\", jsonData[\"task-summary\"][0][\"task-id\"]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/queries/tasks/instances/pot-owners?groups=redhat",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"queries",
+						"tasks",
+						"instances",
+						"pot-owners"
+					],
+					"query": [
+						{
+							"key": "groups",
+							"value": "redhat"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tasks assigned other",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4094ea54-92b6-418e-8e10-f3e991a5ef90",
+						"exec": [
 							""
 						],
 						"type": "text/javascript"
@@ -433,14 +546,70 @@
 						}
 					]
 				},
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
-						"key": "Content-Type",
-						"name": "Content-Type",
+						"key": "Accept",
 						"type": "text",
 						"value": "application/json"
-					},
+					}
+				],
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/queries/tasks/instances/pot-owners?groups=other",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"queries",
+						"tasks",
+						"instances",
+						"pot-owners"
+					],
+					"query": [
+						{
+							"key": "groups",
+							"value": "other"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "claim task unauthorized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "670ae483-35ad-4ced-9af1-cf422645c873",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
 					{
 						"key": "Accept",
 						"type": "text",
@@ -449,11 +618,11 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"lookup\": \"StatelessKS\",\n    \"commands\": [\n        {\n            \"insert\": {\n                \"object\": {\n                    \"com.juliaaano.rhpam.data.Person\": {\n                        \"name\": \"Anonymous\"\n                    }\n                }\n            }\n        },\n        {\n            \"start-process\": {\n                \"processId\": \"rhpam-quickstart.ruleflow\"\n            }\n        },\n        {\n            \"query\": {\n                \"name\": \"getResponse\",\n                \"out-identifier\": \"response\"\n            }\n        },\n        {\n            \"get-objects\": {\n                \"out-identifier\": \"objects\"\n            }\n        }\n    ]\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/instances/{{container-id}}",
-					"protocol": "{{protocol}}",
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed?user={{task-user}}",
+					"protocol": "http",
 					"host": [
 						"{{server}}"
 					],
@@ -461,8 +630,227 @@
 					"path": [
 						"{{basePath}}",
 						"containers",
-						"instances",
-						"{{container-id}}"
+						"{{container-id}}",
+						"tasks",
+						"{{task-id}}",
+						"states",
+						"claimed"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "{{task-user}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "claim task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd365a23-798e-4426-8399-8103cbb32798",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{task-user-pwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{task-user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed?user={{task-user}}",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"tasks",
+						"{{task-id}}",
+						"states",
+						"claimed"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "{{task-user}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "start task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9b03b5e-5612-42ca-a38a-608584c32235",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{task-user-pwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{task-user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/started?user={{task-user}}",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"tasks",
+						"{{task-id}}",
+						"states",
+						"started"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "{{task-user}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "complete task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "973c4a3a-01fd-446f-8766-9ab42d8fbaba",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{task-user}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{task-user-pwd}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"comments\": \"Task completed via REST API!\"\n}"
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/completed?user={{task-user}}",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"tasks",
+						"{{task-id}}",
+						"states",
+						"completed"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "{{task-user}}"
+						}
 					]
 				}
 			},

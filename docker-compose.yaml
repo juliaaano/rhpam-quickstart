@@ -26,7 +26,7 @@ services:
 
   postman:
     image: postman/newman:4.5.3-alpine
-    command: run rhpam.postman_collection.json --environment=${POSTMAN_ENV:-rhpam-jboss}.postman_environment.json
+    command: run rhpam.postman_collection.json --environment=${POSTMAN_ENV:-rhpam-container-jboss}.postman_environment.json
     volumes:
       - type: bind
         source: ./postman
