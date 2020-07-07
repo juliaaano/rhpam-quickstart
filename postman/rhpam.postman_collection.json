@@ -231,100 +231,6 @@
 			"response": []
 		},
 		{
-			"name": "delete container",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{user}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}",
-					"protocol": "{{protocol}}",
-					"host": [
-						"{{server}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"{{basePath}}",
-						"containers",
-						"{{container-id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deploy container",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{password}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{user}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"container-id\": \"rhdm-quickstart\",\n    \"release-id\": {\n        \"group-id\": \"com.juliaaano\",\n        \"artifact-id\": \"rhdm-kjar\",\n        \"version\": \"1.0.3-SNAPSHOT\"\n    }\n}"
-				},
-				"url": {
-					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}",
-					"protocol": "{{protocol}}",
-					"host": [
-						"{{server}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"{{basePath}}",
-						"containers",
-						"{{container-id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "fire-all-rules",
 			"event": [
 				{
@@ -334,10 +240,10 @@
 						"exec": [
 							"const jsonBody = pm.response.json();",
 							"",
-							"const resultBody = jsonBody.result[\"execution-results\"][\"results\"][0][\"value\"][\"org.drools.core.runtime.rule.impl.FlatQueryResults\"][\"idResultMaps\"][\"element\"][0][\"element\"][0][\"value\"][\"com.juliaaano.rhdm.data.Greeting\"];",
+							"const resultBody = jsonBody.result[\"execution-results\"][\"results\"][0][\"value\"][\"org.drools.core.runtime.rule.impl.FlatQueryResults\"][\"idResultMaps\"][\"element\"][0][\"element\"][0][\"value\"][\"com.juliaaano.rhpam.data.Greeting\"];",
 							"",
-							"pm.test(\"Greeting is 'Hello, John!'\", function() {",
-							"    pm.expect(resultBody).to.have.property(\"greeting\", \"Hello, John!\");",
+							"pm.test(\"Greeting is 'What's up, Red Hat?'\", function() {",
+							"    pm.expect(resultBody).to.have.property(\"greeting\", \"What's up, Red Hat?\");",
 							"});",
 							""
 						],
@@ -377,7 +283,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"lookup\": \"StatelessKS\",\n    \"commands\": [\n        {\n            \"insert\": {\n                \"object\": {\n                    \"com.juliaaano.rhpam.data.Person\": {\n                        \"name\": \"John\",\n                        \"surname\": \"Smith\"\n                    }\n                }\n            }\n        },\n        {\n            \"fire-all-rules\": {\n                \"out-identifier\": \"firedActivations\"\n            }\n        },\n        {\n            \"query\": {\n                \"name\": \"getResponse\",\n                \"out-identifier\": \"response\"\n            }\n        },\n        {\n            \"get-objects\": {\n                \"out-identifier\": \"objects\"\n            }\n        }\n    ]\n}"
+					"raw": "{\n    \"lookup\": \"StatelessKS\",\n    \"commands\": [\n        {\n            \"set-focus\": {\n                \"name\": \"greetings\"\n            }\n        },\n        {\n            \"insert\": {\n                \"object\": {\n                    \"com.juliaaano.rhpam.data.Person\": {\n                        \"name\": \"Shadowman\",\n                        \"surname\": \"Red Hat\"\n                    }\n                }\n            }\n        },\n        {\n            \"insert\": {\n                \"object\": {\n                    \"com.juliaaano.rhpam.data.Greeting\": {\n                        \"greeting\": \"\"\n                    }\n                }\n            }\n        },\n        {\n            \"fire-all-rules\": {\n                \"out-identifier\": \"firedActivations\"\n            }\n        },\n        {\n            \"query\": {\n                \"name\": \"getResponse\",\n                \"out-identifier\": \"response\"\n            }\n        },\n        {\n            \"get-objects\": {\n                \"out-identifier\": \"objects\"\n            }\n        }\n    ]\n}"
 				},
 				"url": {
 					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/instances/{{container-id}}",
@@ -459,10 +365,12 @@
 					"script": {
 						"id": "1fdf3165-12cf-455d-94af-bfa529ffdafd",
 						"exec": [
-							"pm.test(\"Your test name\", function () {",
+							"pm.test(\"Get task id\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.environment.set(\"task-id\", jsonData[\"task-summary\"][0][\"task-id\"]);",
-							"});"
+							"});",
+							"",
+							"postman.setNextRequest(\"claim task\");"
 						],
 						"type": "text/javascript"
 					}

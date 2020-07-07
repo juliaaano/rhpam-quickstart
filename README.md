@@ -20,7 +20,7 @@ Experiment Process Automation Manager in two flavors: **JBoss EAP** and **Spring
 ```
 docker-compose up --detach --force-recreate rhpam-jboss
 docker-compose logs --follow rhpam-jboss
-curl -i -H 'Authorization: Basic dXNlcjpwYXNzd29yZA==' http://localhost:18080/services/rest/server
+curl -i -H 'Authorization: Basic YWRtaW5Vc2VyOnBhc3N3b3Jk' http://localhost:18080/services/rest/server
 ```
 
 #### Spring Boot with Docker

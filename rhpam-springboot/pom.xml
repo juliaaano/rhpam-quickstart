@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.7.RELEASE</version>
+    <version>2.2.2.RELEASE</version>
   </parent>
 
   <groupId>com.juliaaano</groupId>
@@ -41,7 +41,7 @@
   </scm>
 
   <properties>
-    <kie.version>7.30.0.Final-redhat-00003</kie.version>
+    <kie.version>7.33.0.Final-redhat-00003</kie.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
