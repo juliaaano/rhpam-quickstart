@@ -1,6 +1,6 @@
 package com.juliaaano.rhpam.data;
 
-public class Person {
+public class Person implements java.io.Serializable {
 
 	private String name;
 	private String surname;
@@ -23,4 +23,10 @@ public class Person {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	
+	@Override
+    public String toString() {
+        return "Person [name=" + name + ", surname=" + surname + "]";
+    }
+
 }

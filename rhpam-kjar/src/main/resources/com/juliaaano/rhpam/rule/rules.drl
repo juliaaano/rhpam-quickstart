@@ -3,21 +3,24 @@ package com.juliaaano.rhpam.rule;
 import com.juliaaano.rhpam.data.Person;
 import com.juliaaano.rhpam.data.Greeting;
 
-rule "GreetingJohn"
+rule "GreetingShadowman"
 	dialect "mvel"
+	ruleflow-group "greetings"
 	when
-		Person( name ==  "John", surname == "Smith" )
+		Person( name ==  "Shadowman", surname == "Red Hat" )
+		$greeting: Greeting()
 	then
-		insert ( new Greeting("Hello, John!") );
+		$greeting.setGreeting("What's up, Red Hat?");
 end
 
-rule "GreetingAnyone"
+rule "GreetingMemberInList"
 	dialect "mvel"
-	ruleflow-group "greeting"
+	ruleflow-group "greetings"
 	when
-		$p: Person( name != null )
+		Person( $surname: surname in ("Smith", "Johnson", "Williams", "Brown") )
+		$greeting: Greeting()
 	then
-		insert ( new Greeting("Hello, " + $p.getName() + "!") );
+	    $greeting.setGreeting("Hello, " + $surname + "!");
 end
 
 query getResponse()

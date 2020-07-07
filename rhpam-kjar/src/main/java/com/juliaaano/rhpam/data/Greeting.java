@@ -1,7 +1,7 @@
 package com.juliaaano.rhpam.data;
 
 
-public class Greeting {
+public class Greeting implements java.io.Serializable {
 
 	private String greeting;
 
@@ -19,4 +19,9 @@ public class Greeting {
 	public Greeting(String greeting) {
 		this.greeting = greeting;
 	}
+	
+	@Override
+    public String toString() {
+        return "Greeting [greeting=" + greeting + "]";
+    }
 }
