@@ -1,6 +1,6 @@
 [submodule "rhpam-dependencies"]
 	path = rhpam-dependencies
-	url = git@github.com:juliaaano/rhpam-dependencies.git
+	url = https://github.com/juliaaano/rhpam-dependencies.git
 [submodule "rhpam-event-listener"]
 	path = rhpam-event-listener
-	url = git@github.com:juliaaano/rhpam-event-listener.git
+	url = https://github.com/juliaaano/rhpam-event-listener.git
