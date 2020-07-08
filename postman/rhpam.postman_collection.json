@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d94617ed-3e77-4002-b0cc-e7c5c1155684",
+		"_postman_id": "c4b67606-a908-4784-b5a2-0324245635a2",
 		"name": "RHPAM Quickstart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,12 +13,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -53,12 +53,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -92,7 +92,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fa16dcec-a24e-400c-8f6a-f23d33e19ebe",
+						"id": "0476bdf6-875f-4fd4-99cc-89c6b27e35f3",
 						"exec": [
 							"",
 							"",
@@ -112,12 +112,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -153,12 +153,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -195,12 +195,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -236,7 +236,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "15a61f96-0755-42e4-8842-718870d1eabd",
+						"id": "7d5786eb-09a4-4a3e-bb93-8f74067c04cf",
 						"exec": [
 							"const jsonBody = pm.response.json();",
 							"",
@@ -245,7 +245,7 @@
 							"pm.test(\"Greeting is 'What's up, Red Hat?'\", function() {",
 							"    pm.expect(resultBody).to.have.property(\"greeting\", \"What's up, Red Hat?\");",
 							"});",
-							""
+							"postman.setNextRequest(\"start myprocess\");"
 						],
 						"type": "text/javascript"
 					}
@@ -257,12 +257,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -303,19 +303,127 @@
 			"response": []
 		},
 		{
-			"name": "start-myprocess",
+			"name": "process form",
 			"request": {
 				"auth": {
 					"type": "basic",
 					"basic": [
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						},
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/processes/rhpam-quickstart.myprocess",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"forms",
+						"processes",
+						"rhpam-quickstart.myprocess"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "process form rendered",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/html"
+					}
+				],
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/processes/rhpam-quickstart.myprocess/content?renderer=patternfly",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"forms",
+						"processes",
+						"rhpam-quickstart.myprocess",
+						"content"
+					],
+					"query": [
+						{
+							"key": "renderer",
+							"value": "bootstrap",
+							"disabled": true
+						},
+						{
+							"key": "renderer",
+							"value": "patternfly"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "start myprocess",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						}
 					]
@@ -330,13 +438,13 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"person\": {\n        \"com.juliaaano.rhpam.data.Person\": {\n            \"name\": \"James\",\n            \"surname\": \"Smith23\"\n        }\n    },\n    \"fetchUrl\": \"http://demo2247207.mockable.io/greeting\"\n}"
+					"raw": "{\n    \"person\": {\n        \"com.juliaaano.rhpam.data.Person\": {\n            \"name\": \"Jay\",\n            \"surname\": \"M\"\n        }\n    },\n    \"fetchUrl\": \"http://demo2247207.mockable.io/greeting\"\n}"
 				},
 				"url": {
 					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/processes/rhpam-quickstart.myprocess/instances",
@@ -363,13 +471,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1fdf3165-12cf-455d-94af-bfa529ffdafd",
+						"id": "fdaa4807-e4fa-41ae-ab46-e89fa2ae890b",
 						"exec": [
 							"pm.test(\"Get task id\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.environment.set(\"task-id\", jsonData[\"task-summary\"][0][\"task-id\"]);",
 							"});",
-							"",
 							"postman.setNextRequest(\"claim task\");"
 						],
 						"type": "text/javascript"
@@ -382,12 +489,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -430,7 +537,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4094ea54-92b6-418e-8e10-f3e991a5ef90",
+						"id": "32758f7e-e696-442a-a0d5-b804fa168a38",
 						"exec": [
 							""
 						],
@@ -444,12 +551,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -487,12 +594,127 @@
 			"response": []
 		},
 		{
+			"name": "task form",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/tasks/{{task-id}}?user=shadowman",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"forms",
+						"tasks",
+						"{{task-id}}"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "shadowman"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "task form rendered",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/html"
+					}
+				],
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/tasks/{{task-id}}/content?renderer=bootstrap",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"forms",
+						"tasks",
+						"{{task-id}}",
+						"content"
+					],
+					"query": [
+						{
+							"key": "renderer",
+							"value": "bootstrap",
+							"description": "\n"
+						},
+						{
+							"key": "renderer",
+							"value": "patternfly",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "claim task unauthorized",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "670ae483-35ad-4ced-9af1-cf422645c873",
+						"id": "48476ac2-c563-49e8-aac4-ba67f6eeb1e5",
 						"exec": [
 							""
 						],
@@ -506,12 +728,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -554,7 +776,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cd365a23-798e-4426-8399-8103cbb32798",
+						"id": "9f9f404a-ac80-40b2-b15f-1da7b8c66c0c",
 						"exec": [
 							""
 						],
@@ -568,12 +790,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -622,7 +844,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f9b03b5e-5612-42ca-a38a-608584c32235",
+						"id": "d9436432-7659-4035-9cfb-b2af64c8fb53",
 						"exec": [
 							""
 						],
@@ -636,12 +858,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -690,7 +912,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "973c4a3a-01fd-446f-8766-9ab42d8fbaba",
+						"id": "32e9c4f2-d118-49f1-aa44-37daeb55da04",
 						"exec": [
 							""
 						],
@@ -704,12 +926,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{password}}",
+							"value": "{{apiUserPwd}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{user}}",
+							"value": "{{apiUser}}",
 							"type": "string"
 						}
 					]
@@ -762,5 +984,6 @@
 			},
 			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
