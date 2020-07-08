@@ -7,7 +7,8 @@ services:
     environment:
       KIE_ADMIN_USER: adminUser
       KIE_ADMIN_PWD: password
-      KIE_SERVER_BYPASS_AUTH_USER: "true"
+      KIE_SERVER_HOST: localhost
+      KIE_SERVER_PORT: 18080
     ports:
       - target: 8080
         published: 18080
