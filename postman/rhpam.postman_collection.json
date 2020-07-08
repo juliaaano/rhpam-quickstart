@@ -529,7 +529,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed?user={{task-user}}",
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed",
 					"protocol": "http",
 					"host": [
 						"{{server}}"
@@ -543,12 +543,6 @@
 						"{{task-id}}",
 						"states",
 						"claimed"
-					],
-					"query": [
-						{
-							"key": "user",
-							"value": "{{task-user}}"
-						}
 					]
 				}
 			},
@@ -574,12 +568,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{task-user-pwd}}",
+							"value": "{{password}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{task-user}}",
+							"value": "{{user}}",
 							"type": "string"
 						}
 					]
@@ -597,7 +591,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed?user={{task-user}}",
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed?user=shadowman",
 					"protocol": "http",
 					"host": [
 						"{{server}}"
@@ -615,7 +609,7 @@
 					"query": [
 						{
 							"key": "user",
-							"value": "{{task-user}}"
+							"value": "shadowman"
 						}
 					]
 				}
@@ -642,12 +636,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{task-user-pwd}}",
+							"value": "{{password}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{task-user}}",
+							"value": "{{user}}",
 							"type": "string"
 						}
 					]
@@ -665,7 +659,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/started?user={{task-user}}",
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/started?user=shadowman",
 					"protocol": "http",
 					"host": [
 						"{{server}}"
@@ -683,7 +677,7 @@
 					"query": [
 						{
 							"key": "user",
-							"value": "{{task-user}}"
+							"value": "shadowman"
 						}
 					]
 				}
@@ -709,13 +703,13 @@
 					"type": "basic",
 					"basic": [
 						{
-							"key": "username",
-							"value": "{{task-user}}",
+							"key": "password",
+							"value": "{{password}}",
 							"type": "string"
 						},
 						{
-							"key": "password",
-							"value": "{{task-user-pwd}}",
+							"key": "username",
+							"value": "{{user}}",
 							"type": "string"
 						}
 					]
@@ -739,7 +733,7 @@
 					"raw": "{\n    \"comments\": \"Task completed via REST API!\"\n}"
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/completed?user={{task-user}}",
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/completed?user=shadowman&auto-progress=true",
 					"protocol": "http",
 					"host": [
 						"{{server}}"
@@ -757,7 +751,11 @@
 					"query": [
 						{
 							"key": "user",
-							"value": "{{task-user}}"
+							"value": "shadowman"
+						},
+						{
+							"key": "auto-progress",
+							"value": "true"
 						}
 					]
 				}
