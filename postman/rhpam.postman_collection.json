@@ -335,8 +335,8 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/processes/rhpam-quickstart.myprocess",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/processes/rhpam-quickstart.myprocess",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -380,8 +380,8 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/processes/rhpam-quickstart.myprocess/content?renderer=patternfly",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/processes/rhpam-quickstart.myprocess/content?renderer=patternfly",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -447,8 +447,8 @@
 					"raw": "{\n    \"person\": {\n        \"com.juliaaano.rhpam.data.Person\": {\n            \"name\": \"Jay\",\n            \"surname\": \"M\"\n        }\n    },\n    \"fetchUrl\": \"http://demo2247207.mockable.io/greeting\"\n}"
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/processes/rhpam-quickstart.myprocess/instances",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/processes/rhpam-quickstart.myprocess/instances",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -508,8 +508,8 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/queries/tasks/instances/pot-owners?groups=redhat",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/queries/tasks/instances/pot-owners?groups=redhat",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -570,8 +570,8 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/queries/tasks/instances/pot-owners?groups=other",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/queries/tasks/instances/pot-owners?groups=other",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -626,8 +626,8 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/tasks/{{task-id}}?user=shadowman",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/tasks/{{task-id}}?user=shadowman",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -677,8 +677,8 @@
 					}
 				],
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/tasks/{{task-id}}/content?renderer=bootstrap",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/forms/tasks/{{task-id}}/content?renderer=bootstrap",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -751,8 +751,8 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -813,8 +813,8 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed?user=shadowman",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/claimed?user=shadowman",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -881,8 +881,8 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/started?user=shadowman",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/started?user=shadowman",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
@@ -955,8 +955,8 @@
 					"raw": "{\n    \"comments\": \"Task completed via REST API!\"\n}"
 				},
 				"url": {
-					"raw": "http://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/completed?user=shadowman&auto-progress=true",
-					"protocol": "http",
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/tasks/{{task-id}}/states/completed?user=shadowman&auto-progress=true",
+					"protocol": "{{protocol}}",
 					"host": [
 						"{{server}}"
 					],
