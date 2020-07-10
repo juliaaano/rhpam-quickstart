@@ -1,0 +1,30 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: rhpmqckstrt
+spec:
+  environment: rhpam-production-immutable
+  upgrades:
+    minor: false
+    enabled: false
+  #https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.7/html/release_notes_for_red_hat_process_automation_manager_7.7/rn-771-known-issues-ref#red_hat_openshift_container_platform_3
+  useImageTags: true
+  commonConfig:
+    adminUser: adminUser
+    adminPassword: password
+  objects:
+    console:
+      replicas: 0
+    servers:
+      # - name: kieserver # assigning a name causes mismatch with deployment config and other resources.
+      - imageTag: 7.7.1
+        deployments: 1
+        replicas: 3
+        build:
+          kieServerContainerDeployment: "rhpam-quickstart=com.juliaaano:rhpam-kjar:1.0.0-SNAPSHOT"
+          gitSource:
+            uri: "https://github.com/juliaaano/rhpam-quickstart"
+            reference: master
+            contextDir: rhpam-kjar
+        database:
+          type: postgresql

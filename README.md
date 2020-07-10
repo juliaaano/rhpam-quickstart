@@ -31,6 +31,17 @@ docker-compose logs --follow rhpam-springboot
 curl -i -u user:user http://localhost:18090/rest/server
 ```
 
+## OpenShift
+
+Installation via the Operator is availabe and scripted inside the 'openshift' folder.
+
+```
+# Must be logged in 'oc login'.
+cd openshift
+./rhpam-operator-install.sh
+oc create -f kieapp-immutable-rhpmqckstrt.yaml
+```
+
 ## Build with Docker
 
 Access to **registry.redhat.io** (docker login) is required to build the JBoss image.
