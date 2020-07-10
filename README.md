@@ -18,28 +18,17 @@ Experiment Process Automation Manager in two flavors: **JBoss EAP** and **Spring
 #### JBoss EAP with Docker
 
 ```
-docker-compose up --detach --force-recreate rhpam-jboss
-docker-compose logs --follow rhpam-jboss
-curl -i -u adminUser:password http://localhost:18080/services/rest/server
+$ docker-compose up --detach --force-recreate rhpam-jboss
+$ docker-compose logs --follow rhpam-jboss
+$ curl -i -u adminUser:password http://localhost:18080/services/rest/server
 ```
 
 #### Spring Boot with Docker
 
 ```
-docker-compose up --detach --force-recreate rhpam-springboot
-docker-compose logs --follow rhpam-springboot
-curl -i -u user:user http://localhost:18090/rest/server
-```
-
-## OpenShift
-
-Installation via the Operator is availabe and scripted inside the 'openshift' folder.
-
-```
-# Must be logged in 'oc login'.
-cd openshift
-./rhpam-operator-install.sh
-oc create -f kieapp-immutable-rhpmqckstrt.yaml
+$ docker-compose up --detach --force-recreate rhpam-springboot
+$ docker-compose logs --follow rhpam-springboot
+$ curl -i -u user:user http://localhost:18090/rest/server
 ```
 
 ## Build with Docker
@@ -47,8 +36,8 @@ oc create -f kieapp-immutable-rhpmqckstrt.yaml
 Access to **registry.redhat.io** (docker login) is required to build the JBoss image.
 
 ```
-docker build --file d.jboss.Dockerfile --tag juliaaano/rhpam-jboss .
-docker build --file d.springboot.Dockerfile --tag juliaaano/rhpam-springboot .
+$ docker build --file d.jboss.Dockerfile --tag juliaaano/rhpam-jboss .
+$ docker build --file d.springboot.Dockerfile --tag juliaaano/rhpam-springboot .
 ```
 
 ## Postman
@@ -58,11 +47,22 @@ Enjoy a setup of automated tests with Postman/Newman.
 Use Docker Compose to bring up the containers and then run:
 
 ```
-POSTMAN_ENV=rhpam-container-jboss docker-compose run --rm postman
-POSTMAN_ENV=rhpam-container-springboot docker-compose run --rm postman
+$ POSTMAN_ENV=rhpam-container-jboss docker-compose run --rm postman
+$ POSTMAN_ENV=rhpam-container-springboot docker-compose run --rm postman
 ```
 
-## Install Process Automation Manager
+## OpenShift Deployment
+
+Installation via the Operator is availabe and scripted inside the 'openshift' folder.
+
+```
+# Must be logged in 'oc login'.
+$ cd openshift
+$ ./rhpam-operator-install.sh
+$ oc create -f kieapp-immutable-rhpmqckstrt.yaml
+```
+
+## JBoss EAP Installation and Deployment
 
 For the installation of Process Automation Manager, visit:
 
