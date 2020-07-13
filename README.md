@@ -53,13 +53,16 @@ $ POSTMAN_ENV=rhpam-container-springboot docker-compose run --rm postman
 
 ## OpenShift Deployment
 
-Installation via the Operator is availabe and scripted inside the 'openshift' folder.
+Installation via the Operator or Templates availabe inside the 'openshift' folder.
+
+Must be already logged in OpenShift (oc login).
 
 ```
-# Must be logged in 'oc login'.
-$ cd openshift
 $ ./rhpam-operator-install.sh
 $ oc create -f kieapp-immutable-rhpmqckstrt.yaml
+```
+```
+$ ./rhpam77-template-install.sh
 ```
 
 ## JBoss EAP Installation and Deployment
