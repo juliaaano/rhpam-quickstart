@@ -53,7 +53,7 @@
           <factAlias>Person</factAlias>
           <expressionAlias>name</expressionAlias>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
-          <columnWidth>253.25</columnWidth>
+          <columnWidth>337.66666666666663</columnWidth>
         </FactMapping>
         <FactMapping>
           <expressionElements>
@@ -76,30 +76,7 @@
           <factAlias>Person</factAlias>
           <expressionAlias>surname</expressionAlias>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
-          <columnWidth>253.25</columnWidth>
-        </FactMapping>
-        <FactMapping>
-          <expressionElements>
-            <ExpressionElement>
-              <step>Greeting</step>
-            </ExpressionElement>
-            <ExpressionElement>
-              <step>greeting</step>
-            </ExpressionElement>
-          </expressionElements>
-          <expressionIdentifier>
-            <name>1594085263764</name>
-            <type>GIVEN</type>
-          </expressionIdentifier>
-          <factIdentifier>
-            <name>1|2</name>
-            <className>com.juliaaano.rhpam.data.Greeting</className>
-          </factIdentifier>
-          <className>java.lang.String</className>
-          <factAlias>Greeting</factAlias>
-          <expressionAlias>greeting</expressionAlias>
-          <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
-          <columnWidth>253.25000000000006</columnWidth>
+          <columnWidth>337.66666666666663</columnWidth>
         </FactMapping>
         <FactMapping>
           <expressionElements>
@@ -122,7 +99,7 @@
           <factAlias>Greeting</factAlias>
           <expressionAlias>greeting</expressionAlias>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
-          <columnWidth>253.25</columnWidth>
+          <columnWidth>337.66666666666663</columnWidth>
         </FactMapping>
       </factMappings>
     </scesimModelDescriptor>
@@ -184,17 +161,6 @@
             </expressionIdentifier>
             <rawValue class="string">How are things, Brian?</rawValue>
           </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
-          </FactMappingValue>
         </factMappingValues>
       </Scenario>
       <Scenario>
@@ -254,17 +220,6 @@
             </expressionIdentifier>
             <rawValue class="string">2</rawValue>
           </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
-          </FactMappingValue>
         </factMappingValues>
       </Scenario>
       <Scenario>
@@ -301,17 +256,6 @@
               <type>GIVEN</type>
             </expressionIdentifier>
             <rawValue class="string">Red Hat</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -377,17 +321,6 @@
               <className>com.juliaaano.rhpam.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
               <name>1|2</name>
               <type>EXPECT</type>
             </expressionIdentifier>
@@ -439,17 +372,6 @@
               <type>GIVEN</type>
             </expressionIdentifier>
             <rawValue class="string">Johnson</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -515,17 +437,6 @@
               <className>com.juliaaano.rhpam.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
               <name>1|2</name>
               <type>EXPECT</type>
             </expressionIdentifier>
@@ -584,17 +495,6 @@
               <className>com.juliaaano.rhpam.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
               <name>1|2</name>
               <type>EXPECT</type>
             </expressionIdentifier>
@@ -646,17 +546,6 @@
               <name>1579601783473</name>
               <type>GIVEN</type>
             </expressionIdentifier>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">anything</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -723,17 +612,6 @@
               <className>com.juliaaano.rhpam.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">any</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
               <name>1|2</name>
               <type>EXPECT</type>
             </expressionIdentifier>
@@ -785,17 +663,6 @@
               <name>1579601783473</name>
               <type>GIVEN</type>
             </expressionIdentifier>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">na</rawValue>
           </FactMappingValue>
           <FactMappingValue>
             <factIdentifier>
@@ -862,17 +729,6 @@
               <className>com.juliaaano.rhpam.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">na</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
               <name>1|2</name>
               <type>EXPECT</type>
             </expressionIdentifier>
@@ -932,17 +788,6 @@
               <className>com.juliaaano.rhpam.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
-              <name>1594085263764</name>
-              <type>GIVEN</type>
-            </expressionIdentifier>
-            <rawValue class="string">na</rawValue>
-          </FactMappingValue>
-          <FactMappingValue>
-            <factIdentifier>
-              <name>1|2</name>
-              <className>com.juliaaano.rhpam.data.Greeting</className>
-            </factIdentifier>
-            <expressionIdentifier>
               <name>1|2</name>
               <type>EXPECT</type>
             </expressionIdentifier>
@@ -967,20 +812,27 @@
     <scesimModelDescriptor>
       <factMappings>
         <FactMapping>
-          <expressionElements/>
+          <expressionElements>
+            <ExpressionElement>
+              <step>Greeting</step>
+            </ExpressionElement>
+            <ExpressionElement>
+              <step>greeting</step>
+            </ExpressionElement>
+          </expressionElements>
           <expressionIdentifier>
             <name>1|1</name>
             <type>GIVEN</type>
           </expressionIdentifier>
           <factIdentifier>
-            <name>Empty</name>
-            <className>java.lang.Void</className>
+            <name>1|1</name>
+            <className>com.juliaaano.rhpam.data.Greeting</className>
           </factIdentifier>
-          <className>java.lang.Void</className>
-          <factAlias>Instance 1</factAlias>
-          <expressionAlias>PROPERTY 1</expressionAlias>
+          <className>java.lang.String</className>
+          <factAlias>Greeting</factAlias>
+          <expressionAlias>greeting</expressionAlias>
           <factMappingValueType>NOT_EXPRESSION</factMappingValueType>
-          <columnWidth>1016.0</columnWidth>
+          <columnWidth>1383.0</columnWidth>
         </FactMapping>
       </factMappings>
     </scesimModelDescriptor>
@@ -989,13 +841,14 @@
         <factMappingValues>
           <FactMappingValue>
             <factIdentifier>
-              <name>Empty</name>
-              <className>java.lang.Void</className>
+              <name>1|1</name>
+              <className>com.juliaaano.rhpam.data.Greeting</className>
             </factIdentifier>
             <expressionIdentifier>
               <name>1|1</name>
               <type>GIVEN</type>
             </expressionIdentifier>
+            <rawValue class="string">any</rawValue>
           </FactMappingValue>
         </factMappingValues>
       </BackgroundData>
