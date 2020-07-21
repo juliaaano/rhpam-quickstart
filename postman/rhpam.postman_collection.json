@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c4b67606-a908-4784-b5a2-0324245635a2",
+		"_postman_id": "6f0d17e1-bb0d-4df5-8db4-5993d99840bc",
 		"name": "RHPAM Quickstart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -92,7 +92,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0476bdf6-875f-4fd4-99cc-89c6b27e35f3",
+						"id": "96f3282e-ec66-47c6-8998-6fafc3ba1883",
 						"exec": [
 							"",
 							"",
@@ -188,55 +188,12 @@
 			"response": []
 		},
 		{
-			"name": "release-id",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{apiUserPwd}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{apiUser}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/release-id",
-					"protocol": "{{protocol}}",
-					"host": [
-						"{{server}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"{{basePath}}",
-						"containers",
-						"{{container-id}}",
-						"release-id"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "fire-all-rules",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "7d5786eb-09a4-4a3e-bb93-8f74067c04cf",
+						"id": "d9f51790-ad9a-41e5-8606-16c2f23f3762",
 						"exec": [
 							"const jsonBody = pm.response.json();",
 							"",
@@ -412,6 +369,21 @@
 		},
 		{
 			"name": "start myprocess",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c2ea576-b540-48cd-ab83-ce6f6aa74010",
+						"exec": [
+							"pm.test(\"Get process id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"process-id\", pm.response.text());",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -471,7 +443,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fdaa4807-e4fa-41ae-ab46-e89fa2ae890b",
+						"id": "9f3758b2-1962-44e9-bd3c-b9537818aa49",
 						"exec": [
 							"pm.test(\"Get task id\", function () {",
 							"    var jsonData = pm.response.json();",
@@ -537,7 +509,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "32758f7e-e696-442a-a0d5-b804fa168a38",
+						"id": "5101ef73-4a85-427b-89b6-c758c3808199",
 						"exec": [
 							""
 						],
@@ -587,6 +559,88 @@
 						{
 							"key": "groups",
 							"value": "other"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reassign task to executives",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14e444e9-c8ce-4386-b048-e5f2f8cc0256",
+						"exec": [
+							"setTimeout(function(){}, 6000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groups\": [\n        \"other\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://{{server}}:{{port}}/{{basePath}}/admin/containers/{{container-id}}/tasks/{{task-id}}/reassignments?expiresAt=5s&whenNotStarted=true&whenNotCompleted=false",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"admin",
+						"containers",
+						"{{container-id}}",
+						"tasks",
+						"{{task-id}}",
+						"reassignments"
+					],
+					"query": [
+						{
+							"key": "expiresAt",
+							"value": "5s"
+						},
+						{
+							"key": "whenNotStarted",
+							"value": "true"
+						},
+						{
+							"key": "whenNotCompleted",
+							"value": "false"
 						}
 					]
 				}
@@ -714,7 +768,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "48476ac2-c563-49e8-aac4-ba67f6eeb1e5",
+						"id": "bfe7cba0-ba49-4dba-bbe9-5ad4fef60772",
 						"exec": [
 							""
 						],
@@ -776,7 +830,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9f9f404a-ac80-40b2-b15f-1da7b8c66c0c",
+						"id": "a5a5eebf-52ef-4220-8936-d0cfb593134d",
 						"exec": [
 							""
 						],
@@ -844,7 +898,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d9436432-7659-4035-9cfb-b2af64c8fb53",
+						"id": "1b2f5125-18f6-4334-b2ae-5db76a492457",
 						"exec": [
 							""
 						],
@@ -912,9 +966,9 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "32e9c4f2-d118-49f1-aa44-37daeb55da04",
+						"id": "3bb21fa2-2604-442d-a6da-8ac259c0cc4a",
 						"exec": [
-							""
+							"postman.setNextRequest(\"release-id\");"
 						],
 						"type": "text/javascript"
 					}
@@ -979,6 +1033,223 @@
 							"key": "auto-progress",
 							"value": "true"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jobs status ERROR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22c5a49e-062c-4ee7-913e-91b064476296",
+						"exec": [
+							"pm.test(\"Get job id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"job-id\", jsonData[\"request-info-instance\"][0][\"request-instance-id\"]);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/jobs?status=ERROR",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "ERROR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "variable fetchUrl",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"http://demo2247207.mockable.io/greeting\""
+				},
+				"url": {
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/processes/instances/{{process-id}}/variable/fetchUrl",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"processes",
+						"instances",
+						"{{process-id}}",
+						"variable",
+						"fetchUrl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "requeue job",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "26efad3e-226e-4c9c-b698-0b8a67c0e7de",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/jobs/{{job-id}}",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"jobs",
+						"{{job-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "release-id",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{apiUserPwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{apiUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/release-id",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{basePath}}",
+						"containers",
+						"{{container-id}}",
+						"release-id"
 					]
 				}
 			},
