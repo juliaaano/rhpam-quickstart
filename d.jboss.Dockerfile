@@ -22,7 +22,7 @@ COPY rhpam-kjar/pom.xml /build/rhpam-kjar/
 RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode dependency:go-offline
 
 COPY rhpam-kjar/src /build/rhpam-kjar/src/
-RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode install
+RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode install -DskipTests
 
 
 ### EXECUTABLE IMAGE ###
