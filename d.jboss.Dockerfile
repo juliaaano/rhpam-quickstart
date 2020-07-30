@@ -22,11 +22,11 @@ COPY rhpam-kjar/pom.xml /build/rhpam-kjar/
 RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode dependency:go-offline
 
 COPY rhpam-kjar/src /build/rhpam-kjar/src/
-RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode --offline install -DskipTests
+RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode install -DskipTests
 
 
 ### EXECUTABLE IMAGE ###
-FROM registry.redhat.io/rhpam-7/rhpam-kieserver-rhel8:7.7.1
+FROM registry.redhat.io/rhpam-7/rhpam-kieserver-rhel8:7.8.0
 
 COPY --from=builder /root/.m2/repository /home/jboss/.m2/repository/
 
