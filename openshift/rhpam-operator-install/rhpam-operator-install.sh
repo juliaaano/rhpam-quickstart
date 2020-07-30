@@ -8,7 +8,7 @@ oc get packagemanifests -n openshift-marketplace | grep businessautomation
 
 oc new-project $NAMESPACE
 
-if [ -z $OCP_PULL_SECRET ]; then
+if [ -z "${OCP_PULL_SECRET+x}" ]; then
 
 echo "------------------------------------------------------------------------"
 echo "OCP_PULL_SECRET not found. OpenShift secrets for image pull not created."
