@@ -16,13 +16,13 @@ RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode dependency:go-off
 RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode install
 
 COPY rhpam-event-listener/src /build/rhpam-event-listener/src/
-RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode --offline install -DskipTests
+RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode --offline install
 
 COPY rhpam-kjar/pom.xml /build/rhpam-kjar/
 RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode dependency:go-offline
 
 COPY rhpam-kjar/src /build/rhpam-kjar/src/
-RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode install -DskipTests
+RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode install
 
 
 ### EXECUTABLE IMAGE ###
