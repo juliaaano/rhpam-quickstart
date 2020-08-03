@@ -416,7 +416,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"person\": {\n        \"com.juliaaano.rhpam.data.Person\": {\n            \"name\": \"Jay\",\n            \"surname\": \"M\"\n        }\n    },\n    \"fetchUrl\": \"http://demo2247207.mockable.io/greeting\"\n}"
+					"raw": "{\n    \"person\": {\n        \"com.juliaaano.rhpam.data.Person\": {\n            \"name\": \"Jay\",\n            \"surname\": \"M\"\n        }\n    },\n    \"fetchUrl\": \"http://demo2247207.mockable.io/greeting\",\n    \"userTaskGroup\": \"acme\"\n}"
 				},
 				"url": {
 					"raw": "{{protocol}}://{{server}}:{{port}}/{{basePath}}/containers/{{container-id}}/processes/rhpam-quickstart.myprocess/instances",
