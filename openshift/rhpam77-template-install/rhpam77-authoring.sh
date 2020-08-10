@@ -48,6 +48,6 @@ oc new-app -f rhpam77-authoring.yaml \
 -p KIE_SERVER_HTTPS_SECRET="kieserver-app-secret" \
 -p KIE_SERVER_HTTPS_PASSWORD=$KEYSTORE_PWD \
 -p CREDENTIALS_SECRET="rhpam-credentials" \
--p APPLICATION_NAME="rhpmqckstrt"
+-p APPLICATION_NAME="quickstart"
 
 echo "end of script"

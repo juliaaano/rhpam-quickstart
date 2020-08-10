@@ -18,8 +18,9 @@ spec:
         - name: ORG_APPFORMER_SIMPLIFIED_MONITORING_ENABLED
           value: 'true'
     servers:
-      - name: rhpam
-        deployments: 1
+      # - name: rhpam
+      #   deployments: 1
+      - deployments: 1
         replicas: 3
         build:
           kieServerContainerDeployment: "rhpam-quickstart=com.juliaaano:rhpam-kjar:1.0.0-SNAPSHOT"
@@ -29,14 +30,14 @@ spec:
             contextDir: rhpam-kjar
         database:
           type: postgresql
-      - name: rhdm
-        deployments: 1
-        replicas: 1
-        build:
-          kieServerContainerDeployment: "rhdm-quickstart=com.juliaaano:rhdm-kjar:1.0.2-SNAPSHOT"
-          gitSource:
-            uri: "https://github.com/juliaaano/rhdm-quickstart"
-            reference: master
-            contextDir: rhdm-kjar
-        database:
-          type: h2
+      # - name: rhdm
+      #   deployments: 1
+      #   replicas: 1
+      #   build:
+      #     kieServerContainerDeployment: "rhdm-quickstart=com.juliaaano:rhdm-kjar:1.0.2-SNAPSHOT"
+      #     gitSource:
+      #       uri: "https://github.com/juliaaano/rhdm-quickstart"
+      #       reference: master
+      #       contextDir: rhdm-kjar
+      #   database:
+      #     type: h2
