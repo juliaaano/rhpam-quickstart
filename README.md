@@ -53,9 +53,32 @@ $ POSTMAN_ENV=rhpam-container-springboot docker-compose run --rm postman
 
 ## OpenShift Deployment
 
-Installation via the **operator** or **templates** availabe inside the 'openshift' folder.
+Installation via the **operator** or **templates** availabe inside the *openshift* folder.
 
-Must be already logged in OpenShift (oc login).
+### Pre conditions
+
+1. Must be already logged in OpenShift (oc login).
+
+2. **OpenShift secret**: allows OCP to pull images from the Red Hat registry.
+
+   2.1. Create a service account at https://access.redhat.com/terms-based-registry
+
+   2.2. Get the OpenShfit secret. It should be something like this:
+   ```
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: 12345678-temp-pull-secret
+   data:
+     .dockerconfigjson: <secret-value-you-should-copy-and-paste>
+   type: kubernetes.io/dockerconfigjson
+   ```
+   2.3. Assign that value to the env variable:
+   ```
+   $ export OCP_PULL_SECRET=<secret-value-you-should-copy-and-paste>
+   ```
+
+### Install
 
 ```
 # Install with the operator
