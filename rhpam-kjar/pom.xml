@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.juliaaano</groupId>
     <artifactId>rhpam-dependencies</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
   </parent>
 
   <artifactId>rhpam-kjar</artifactId>
