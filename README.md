@@ -55,21 +55,26 @@ $ POSTMAN_ENV=rhpam-container-springboot docker-compose run --rm postman
 
 Installation via the **operator** or **templates** availabe inside the *openshift* folder.
 
-### Pre conditions
+### Setup Credentials
 
-1. OpenShift login as cluster admin (oc login).
-2. Red Hat registry.redhat.io account credentials.
-
-### Install
+Requires a [registry.redhat.io](https://registry.redhat.io/) account for pulling the container images.
 
 ```
-# Install with the operator
-$ RH_REGISTRY_USR=rh-username RH_REGISTRY_PWD=rh-password ./rhpam-operator-install.sh
+$ export RH_REGISTRY_USR=rh-username
+$ export RH_REGISTRY_PWD=rh-password
+```
+
+### Operator
+
+```
+$ ./rhpam-operator-install.sh
 $ oc create -f kieapp-immutable-quickstart.yaml
 ```
+
+### Template
+
 ```
-# Install with the template
-$ RH_REGISTRY_USR=rh-username RH_REGISTRY_PWD=rh-password ./rhpam78-prod-immutable-kieserver.sh
+$ ./rhpam78-prod-immutable-kieserver.sh
 ```
 
 ## JBoss EAP Installation and Deployment
