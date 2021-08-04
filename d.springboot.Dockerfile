@@ -2,41 +2,37 @@
 # 1. Builder image for the KJAR.
 # 2. Builder image for the executable Spring Boot fat jar.
 # 3. Executable image with just the JDK and the app fat jar.
-# Maven 'dependency:go-offline' followed by '--offline install' is used to leverage
-# the Docker caching so builds are faster after the first time.
-
+#
+# dependency:go-offline does not resolve transitive BOM (from drools-bom), therefore '--offline' does not work.
 
 ### DEPENDENCIES BUILDER IMAGE ###
-FROM maven:3-jdk-8-slim as builder-deps
+FROM docker.io/maven:3-jdk-11-slim as builder-deps
 
+### rhpam-dependencies
 COPY rhpam-dependencies/pom.xml /build/rhpam-dependencies/
-RUN mvn --file build/rhpam-dependencies/pom.xml --batch-mode install
+RUN mvn --batch-mode --file build/rhpam-dependencies/pom.xml install
 
+### rhpam-event-listener
 COPY rhpam-event-listener/pom.xml /build/rhpam-event-listener/
-RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode dependency:go-offline
-# dependency:go-offline does not resolve transitive BOM (from drools-bom), therefore 'install'is required.
-RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode install
-
+RUN mvn --batch-mode --file build/rhpam-event-listener/pom.xml dependency:go-offline
 COPY rhpam-event-listener/src /build/rhpam-event-listener/src/
-RUN mvn --file build/rhpam-event-listener/pom.xml --batch-mode --offline install -DskipTests
+RUN mvn --batch-mode --define skipTests --file build/rhpam-event-listener/pom.xml install
 
+### rhpam-kjar
 COPY rhpam-kjar/pom.xml /build/rhpam-kjar/
-RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode dependency:go-offline
-
+RUN mvn --batch-mode --file build/rhpam-kjar/pom.xml dependency:go-offline
 COPY rhpam-kjar/src /build/rhpam-kjar/src/
-RUN mvn --file build/rhpam-kjar/pom.xml --batch-mode --offline install -DskipTests
+RUN mvn --batch-mode --define skipTests --file build/rhpam-kjar/pom.xml install
 
 
 ### APP BUILDER IMAGE ###
-FROM maven:3-jdk-8-slim as builder-app
+FROM docker.io/maven:3-jdk-11-slim as builder-app
 
 COPY rhpam-springboot/pom.xml /build/
-
-RUN mvn --file build/pom.xml --batch-mode dependency:go-offline
+RUN mvn --batch-mode --file build/pom.xml dependency:go-offline
 
 COPY rhpam-springboot/src /build/src/
-
-RUN mvn --file build/pom.xml --batch-mode --offline package -DskipTests \
+RUN mvn --batch-mode --define skipTests --file build/pom.xml package \
     && mkdir app \
     && mv build/target/*.jar app/app.jar
 
@@ -44,7 +40,7 @@ COPY rhpam-springboot/rhpam-springboot.xml /app/
 
 
 ### EXECUTABLE IMAGE ###
-FROM openjdk:8-jre-slim
+FROM docker.io/openjdk:11-jre-slim
 
 COPY --from=builder-deps /root/.m2/repository /root/.m2/repository/
 COPY --from=builder-app app app/

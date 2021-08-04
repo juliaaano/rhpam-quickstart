@@ -57,37 +57,19 @@ Installation via the **operator** or **templates** availabe inside the *openshif
 
 ### Pre conditions
 
-1. Must be already logged in OpenShift (oc login).
-
-2. **OpenShift secret**: allows OCP to pull images from the Red Hat registry.
-
-   2.1. Create a service account at https://access.redhat.com/terms-based-registry
-
-   2.2. Get the OpenShfit secret. It should be something like this:
-   ```
-   apiVersion: v1
-   kind: Secret
-   metadata:
-     name: 12345678-temp-pull-secret
-   data:
-     .dockerconfigjson: <secret-value-you-should-copy-and-paste>
-   type: kubernetes.io/dockerconfigjson
-   ```
-   2.3. Assign that value to the env variable:
-   ```
-   $ export OCP_PULL_SECRET=<secret-value-you-should-copy-and-paste>
-   ```
+1. OpenShift login as cluster admin (oc login).
+2. Red Hat registry.redhat.io account credentials.
 
 ### Install
 
 ```
 # Install with the operator
-$ ./rhpam-operator-install.sh
-$ oc create -f kieapp-immutable-rhpmqckstrt.yaml
+$ RH_REGISTRY_USR=rh-username RH_REGISTRY_PWD=rh-password ./rhpam-operator-install.sh
+$ oc create -f kieapp-immutable-quickstart.yaml
 ```
 ```
 # Install with the template
-$ ./rhpam78-prod-immutable-kieserver.sh
+$ RH_REGISTRY_USR=rh-username RH_REGISTRY_PWD=rh-password ./rhpam78-prod-immutable-kieserver.sh
 ```
 
 ## JBoss EAP Installation and Deployment

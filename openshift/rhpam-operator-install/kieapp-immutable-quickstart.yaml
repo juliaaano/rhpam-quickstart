@@ -4,7 +4,7 @@ metadata:
   name: quickstart
 spec:
   environment: rhpam-production-immutable
-  version: 7.8.0
+  version: 7.11.1
   upgrades:
     minor: false
     enabled: false
@@ -13,7 +13,7 @@ spec:
     adminPassword: password
   objects:
     console:
-      replicas: 1
+      replicas: 0
       env:
         - name: ORG_APPFORMER_SIMPLIFIED_MONITORING_ENABLED
           value: 'true'
@@ -21,7 +21,7 @@ spec:
       # - name: rhpam
       #   deployments: 1
       - deployments: 1
-        replicas: 3
+        replicas: 1
         build:
           kieServerContainerDeployment: "rhpam-quickstart=com.juliaaano:rhpam-kjar:1.0.0-SNAPSHOT"
           gitSource:

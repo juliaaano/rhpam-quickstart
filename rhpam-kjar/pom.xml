@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.juliaaano</groupId>
     <artifactId>rhpam-dependencies</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
   </parent>
 
   <artifactId>rhpam-kjar</artifactId>
@@ -23,7 +23,7 @@
     <dependency>
       <groupId>com.juliaaano</groupId>
       <artifactId>rhpam-event-listener</artifactId>
-      <version>1.0.1</version>
+      <version>1.1.0</version>
       <scope>runtime</scope>
     </dependency>
     <!-- test -->

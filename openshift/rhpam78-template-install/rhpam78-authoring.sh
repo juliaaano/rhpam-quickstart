@@ -2,29 +2,30 @@
 
 set -euo pipefail
 
+echo "-------------------------------------------------------------------------------"
+echo "RHPAM AUTHORING Template Install"
+echo "-------------------------------------------------------------------------------"
+
 NAMESPACE=${1:-"rhpam"}
 
 oc get imagestreamtag -n openshift | grep rhpam-kieserver | grep 7.8
 
 oc new-project $NAMESPACE
 
-if [ -z "${OCP_PULL_SECRET+x}" ]; then
+if [ -z "${RH_REGISTRY_USR+x}" -o -z "${RH_REGISTRY_PWD+x}" ]; then
 
-echo "------------------------------------------------------------------------"
-echo "OCP_PULL_SECRET not found. OpenShift secrets for image pull not created."
-echo "------------------------------------------------------------------------"
+echo "-------------------------------------------------------------------------------"
+echo "RH_REGISTRY_USR or RH_REGISTRY_PWD not found."
+echo "OpenShift secrets for image pull not created."
+echo "-------------------------------------------------------------------------------"
 
 else
 
-cat <<EOF | oc apply -f -
-apiVersion: v1
-kind: Secret
-metadata:
-  name: redhat-pull-secret
-data:
-  .dockerconfigjson: ${OCP_PULL_SECRET}
-type: kubernetes.io/dockerconfigjson
-EOF
+oc create secret docker-registry redhat-pull-secret \
+    --docker-server=registry.redhat.io \
+    --docker-username=${RH_REGISTRY_USR} \
+    --docker-password=${RH_REGISTRY_PWD}
+
 
 oc secrets link default redhat-pull-secret --for=pull
 oc secrets link builder redhat-pull-secret --for=pull

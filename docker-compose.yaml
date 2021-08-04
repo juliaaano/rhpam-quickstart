@@ -26,7 +26,7 @@ services:
         published: 18090
 
   postman:
-    image: postman/newman:4.5.3-alpine
+    image: docker.io/postman/newman:5.2.4-alpine
     command: run rhpam.postman_collection.json --environment=${POSTMAN_ENV:-rhpam-container-jboss}.postman_environment.json
     volumes:
       - type: bind
