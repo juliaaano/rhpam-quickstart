@@ -6,21 +6,23 @@
 ### BUILDER IMAGE ###
 FROM docker.io/maven:3-jdk-11-slim as builder
 
+ARG MVN="mvn --show-version --batch-mode"
+
 ### rhpam-dependencies
 COPY rhpam-dependencies/pom.xml /build/rhpam-dependencies/
-RUN mvn --batch-mode --file build/rhpam-dependencies/pom.xml install
+RUN $MVN --file build/rhpam-dependencies/pom.xml install
 
 ### rhpam-event-listener
 COPY rhpam-event-listener/pom.xml /build/rhpam-event-listener/
-RUN mvn --batch-mode --file build/rhpam-event-listener/pom.xml dependency:go-offline
+RUN $MVN --file build/rhpam-event-listener/pom.xml dependency:go-offline
 COPY rhpam-event-listener/src /build/rhpam-event-listener/src/
-RUN mvn --batch-mode --file build/rhpam-event-listener/pom.xml install
+RUN $MVN --file build/rhpam-event-listener/pom.xml install
 
 ### rhpam-kjar
 COPY rhpam-kjar/pom.xml /build/rhpam-kjar/
-RUN mvn --batch-mode --file build/rhpam-kjar/pom.xml dependency:go-offline
+RUN $MVN --file build/rhpam-kjar/pom.xml dependency:go-offline
 COPY rhpam-kjar/src /build/rhpam-kjar/src/
-RUN mvn --batch-mode --file build/rhpam-kjar/pom.xml install
+RUN $MVN --file build/rhpam-kjar/pom.xml install
 
 
 ### EXECUTABLE IMAGE ###
