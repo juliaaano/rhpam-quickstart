@@ -4,7 +4,7 @@
 # dependency:go-offline does not resolve transitive BOM (from drools-bom), therefore '--offline' does not work.
 
 ### BUILDER IMAGE ###
-FROM docker.io/maven:3-openjdk-11-slim as builder
+FROM docker.io/maven:3.8.1-jdk-11-slim as builder
 
 ARG MVN="mvn --show-version --batch-mode"
 
