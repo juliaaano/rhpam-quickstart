@@ -1,0 +1,65 @@
+name: ci
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - ".github/workflows/ci.yml"
+      - "rhpam-kjar/**"
+      - "d.jboss.Dockerfile"
+      - "docker-compose.yaml"
+  schedule:
+    #        ┌───────────── minute (0 - 59)
+    #        │  ┌───────────── hour (0 - 23)
+    #        │  │ ┌───────────── day of the month (1 - 31)
+    #        │  │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+    #        │  │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+    #        │  │ │ │ │
+    #        │  │ │ │ │
+    #        │  │ │ │ │
+    #        *  * * * *
+    - cron: "15 1 * * 1"
+
+permissions:
+  packages: write
+
+concurrency:
+  group: ci
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        submodules: true
+      - name: set datetime
+        run: |
+          echo "datetime=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+      - name: login registry.redhat.io
+        uses: redhat-actions/podman-login@v1
+        with:
+          registry: registry.redhat.io
+          username: ${{ secrets.REDHAT_USR }}
+          password: ${{ secrets.REDHAT_PWD }}
+          logout: true
+      - name: build image
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: juliaaano/rhpam-quickstart
+          tags: latest ${{ github.sha }}
+          dockerfiles: |
+            ./d.jboss.Dockerfile
+          build-args: |
+            CREATED_AT=${{ env.datetime }}
+            GITHUB_SHA=${{ github.sha }}
+      # - name: push image to ghcr.io
+      #   uses: redhat-actions/push-to-registry@v2
+      #   with:
+      #     image: ${{ steps.build-image.outputs.image }}
+      #     tags: ${{ steps.build-image.outputs.tags }}
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}

@@ -6,6 +6,22 @@
 ### BUILDER IMAGE ###
 FROM docker.io/maven:3.8.1-jdk-11-slim as builder
 
+ARG CREATED_AT="none"
+ARG GITHUB_SHA="none"
+
+LABEL org.opencontainers.image.created="$CREATED_AT"
+LABEL org.opencontainers.image.revision="$GITHUB_SHA"
+
+LABEL org.opencontainers.image.title="RHPAM Quickstart"
+LABEL org.opencontainers.image.description="Red Hat Process Automation Quickstart Application with KIE Server in JBoss EAP."
+LABEL org.opencontainers.image.url="https://github/juliaaano/rhpam-quickstart"
+LABEL org.opencontainers.image.source="git@github.com:juliaaano/rhpam-quickstart"
+LABEL org.opencontainers.image.documentation="https://github/juliaaano/rhpam-quickstart"
+LABEL org.opencontainers.image.authors="juliaaano"
+LABEL org.opencontainers.image.vendor="juliaaano"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.version="1.1.0"
+
 ARG MVN="mvn --show-version --batch-mode"
 
 ### rhpam-dependencies
