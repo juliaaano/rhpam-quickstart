@@ -33,7 +33,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-        submodules: true
+        with:
+          submodules: true
       - name: set datetime
         run: |
           echo "datetime=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
