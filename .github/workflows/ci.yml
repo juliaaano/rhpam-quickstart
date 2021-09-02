@@ -6,8 +6,11 @@ on:
     paths:
       - ".github/workflows/ci.yml"
       - "rhpam-kjar/**"
+      - "rhpam-springboot/**"
       - "d.jboss.Dockerfile"
+      - "d.springboot.Dockerfile"
       - "docker-compose.yaml"
+      - ".dockerignore"
   schedule:
     #        ┌───────────── minute (0 - 59)
     #        │  ┌───────────── hour (0 - 23)
@@ -45,22 +48,41 @@ jobs:
           username: ${{ secrets.REDHAT_USR }}
           password: ${{ secrets.REDHAT_PWD }}
           logout: true
-      - name: build image
-        id: build-image
+      - name: build image jboss
+        id: build-image-jboss
         uses: redhat-actions/buildah-build@v2
         with:
-          image: juliaaano/rhpam-quickstart
+          image: juliaaano/rhpam-jboss
           tags: latest ${{ github.sha }}
           dockerfiles: |
             ./d.jboss.Dockerfile
           build-args: |
             CREATED_AT=${{ env.datetime }}
             GITHUB_SHA=${{ github.sha }}
-      - name: push image to ghcr.io
+      - name: build image springboot
+        id: build-image-springboot
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: juliaaano/rhpam-springboot
+          tags: latest ${{ github.sha }}
+          dockerfiles: |
+            ./d.springboot.Dockerfile
+          build-args: |
+            CREATED_AT=${{ env.datetime }}
+            GITHUB_SHA=${{ github.sha }}
+      - name: push image jboss to ghcr.io
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.build-image.outputs.tags }}
+          image: ${{ steps.build-image-jboss.outputs.image }}
+          tags: ${{ steps.build-image-jboss.outputs.tags }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: push image springboot to ghcr.io
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-image-springboot.outputs.image }}
+          tags: ${{ steps.build-image-springboot.outputs.tags }}
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}

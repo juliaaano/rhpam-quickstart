@@ -1,0 +1,9 @@
+*
+!rhpam-dependencies/pom.xml
+!rhpam-event-listener/src/
+!rhpam-event-listener/pom.xml
+!rhpam-kjar/src/
+!rhpam-kjar/pom.xml
+!rhpam-springboot/src/
+!rhpam-springboot/pom.xml
+!rhpam-springboot/rhpam-springboot.xml

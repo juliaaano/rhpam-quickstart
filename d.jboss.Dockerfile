@@ -1,22 +1,23 @@
+# 
 # This Dockerfile is divided in two stages, the first is a builder for the KJAR
 # and the second is the executable image (KIE Server + KJAR).
-#
 # dependency:go-offline does not resolve transitive BOM (from drools-bom), therefore '--offline' does not work.
+
 
 ### BUILDER IMAGE ###
 FROM docker.io/maven:3.8.1-jdk-11-slim as builder
 
 ARG MVN="mvn --show-version --batch-mode"
 
+### Choose to build the dependencies or let them resolve from Maven Central.
 ### rhpam-dependencies
-COPY rhpam-dependencies/pom.xml /build/rhpam-dependencies/
-RUN $MVN --file build/rhpam-dependencies/pom.xml install
-
+# COPY rhpam-dependencies/pom.xml /build/rhpam-dependencies/
+# RUN $MVN --file build/rhpam-dependencies/pom.xml install
 ### rhpam-event-listener
-COPY rhpam-event-listener/pom.xml /build/rhpam-event-listener/
-RUN $MVN --file build/rhpam-event-listener/pom.xml dependency:go-offline
-COPY rhpam-event-listener/src /build/rhpam-event-listener/src/
-RUN $MVN --file build/rhpam-event-listener/pom.xml install
+# COPY rhpam-event-listener/pom.xml /build/rhpam-event-listener/
+# RUN $MVN --file build/rhpam-event-listener/pom.xml dependency:go-offline
+# COPY rhpam-event-listener/src /build/rhpam-event-listener/src/
+# RUN $MVN --file build/rhpam-event-listener/pom.xml install
 
 ### rhpam-kjar
 COPY rhpam-kjar/pom.xml /build/rhpam-kjar/

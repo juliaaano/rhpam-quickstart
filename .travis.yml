@@ -13,12 +13,12 @@ language: minimal
 services:
   - docker
 
-before_install:
-  - echo "$DOCKERHUB_PWD" | docker login --username "$DOCKERHUB_USR" --password-stdin
-  - echo "$REDHAT_PWD" | docker login --username "$REDHAT_USR" --password-stdin registry.redhat.io
+# before_install:
+  # - echo "$DOCKERHUB_PWD" | docker login --username "$DOCKERHUB_USR" --password-stdin
+  # - echo "$REDHAT_PWD" | docker login --username "$REDHAT_USR" --password-stdin registry.redhat.io
 
-install:
-  - docker build --file d.jboss.Dockerfile --tag juliaaano/rhpam-jboss:latest .
+# install:
+  # - docker build --file d.jboss.Dockerfile --tag juliaaano/rhpam-jboss:latest .
   # - docker build --file d.springboot.Dockerfile --tag juliaaano/rhpam-springboot:latest .
 
 before_script:
@@ -29,7 +29,7 @@ script:
   - POSTMAN_ENV=rhpam-container-jboss docker-compose run --rm postman
   # - POSTMAN_ENV=rhpam-springboot docker-compose run --rm postman
 
-after_success:
-  - for i in $(docker images --format "{{.Repository}}:{{.Tag}}" | grep "juliaaano"); do docker push $i; done
-  - docker logout registry.redhat.io
-  - docker logout
+# after_success:
+  # - for i in $(docker images --format "{{.Repository}}:{{.Tag}}" | grep "juliaaano"); do docker push $i; done
+  # - docker logout
+  # - docker logout registry.redhat.io

@@ -1,5 +1,5 @@
 # Red Hat Process Automation Manager
-[![Build Status](https://travis-ci.com/juliaaano/rhpam-quickstart.svg)](https://travis-ci.com/juliaaano/rhpam-quickstart)
+[![ci](https://github.com/juliaaano/rhpam-quickstart/actions/workflows/ci.yml/badge.svg)](https://github.com/juliaaano/rhpam-quickstart/actions/workflows/ci.yml)
 
 A collection of artifacts to get you started with Red Hat Process Automation Manager.
 
@@ -36,8 +36,8 @@ $ curl -i -u user:user http://localhost:18090/rest/server
 Access to **registry.redhat.io** (docker login) is required to build the JBoss image.
 
 ```
-$ docker build --file d.jboss.Dockerfile --tag juliaaano/rhpam-jboss .
-$ docker build --file d.springboot.Dockerfile --tag juliaaano/rhpam-springboot .
+$ docker build --file d.jboss.Dockerfile --tag ghcr.io/juliaaano/rhpam-jboss:local .
+$ docker build --file d.springboot.Dockerfile --tag ghcr.io/juliaaano/rhpam-springboot:local .
 ```
 
 ## Postman
