@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   rhpam-jboss:
-    image: ghcr.io/juliaaano/rhpam-jboss:latest
+    image: ${RHPAM_JBOSS_IMAGE:-ghcr.io/juliaaano/rhpam-jboss:latest}
     environment:
       KIE_ADMIN_USER: adminUser
       KIE_ADMIN_PWD: password
@@ -20,7 +20,7 @@ services:
       #   published: 18888
 
   rhpam-springboot:
-    image: ghcr.io/juliaaano/rhpam-springboot:latest
+    image: ${RHPAM_JBOSS_IMAGE:-ghcr.io/juliaaano/rhpam-springboot:latest}
     ports:
       - target: 8090
         published: 18090
