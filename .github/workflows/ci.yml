@@ -68,6 +68,8 @@ jobs:
           build-args: |
             CREATED_AT=${{ env.datetime }}
             GITHUB_SHA=${{ github.sha }}
+          extra-args: |
+            --ulimit nofile=4096:4096
       - name: push image jboss to ghcr.io
         uses: redhat-actions/push-to-registry@v2
         with:
