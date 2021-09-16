@@ -36,8 +36,15 @@ $ curl -i -u user:user http://localhost:18090/rest/server
 Access to **registry.redhat.io** (docker login) is required to build the JBoss image.
 
 ```
-$ docker build --file d.jboss.Dockerfile --tag ghcr.io/juliaaano/rhpam-jboss:local .
-$ docker build --file d.springboot.Dockerfile --tag ghcr.io/juliaaano/rhpam-springboot:local .
+$ docker build --file d.jboss.Dockerfile --tag localhost/juliaaano/rhpam-jboss .
+$ docker build --file d.springboot.Dockerfile --tag localhost/juliaaano/rhpam-springboot .
+```
+
+Run the local build:
+
+```
+$ RHPAM_JBOSS_IMAGE=localhost/juliaaano/rhpam-springboot docker-compose up -d rhpam-jboss
+$ RHPAM_SPRINGBOOT_IMAGE=localhost/juliaaano/rhpam-springboot docker-compose up -d rhpam-springboot
 ```
 
 ## Postman

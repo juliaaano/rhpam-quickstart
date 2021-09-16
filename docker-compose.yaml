@@ -20,7 +20,7 @@ services:
       #   published: 18888
 
   rhpam-springboot:
-    image: ${RHPAM_JBOSS_IMAGE:-ghcr.io/juliaaano/rhpam-springboot:latest}
+    image: ${RHPAM_SPRINGBOOT_IMAGE:-ghcr.io/juliaaano/rhpam-springboot:latest}
     ports:
       - target: 8090
         published: 18090
